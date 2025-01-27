@@ -1,0 +1,73 @@
+.mapa{
+  background-color: brown;
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  border: solid 5px black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.base{
+  display: flex;
+}
+
+.bloco {
+  width: 40px;
+  height: 40px;
+  background-color: green;
+  border: 1px solid black;
+}
+
+.barreira{
+  display: flex;
+}
+
+.muro{
+  width: 545px;
+  height: 40px;
+  background-color: black;
+  border: 1px solid black;  
+}
+
+.porta{
+  height: 40px;
+  width: 40px;
+  background-color: blueviolet;
+  border: 1px solid black;
+}
+
+/* Campo de Batalha*/
+
+.campoBatalha{
+  display: flex;
+}
+
+.blocoDeCombate {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(251, 191, 10);
+  border: 1px solid black;
+}
+
+/* Mar */
+.mar{
+  display: flex;
+}
+
+.areaDeNado {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(27, 2, 127);
+  border: 1px solid black;
+}
+
+#objeto {
+  width: 18px;
+  height: 18px;
+  background-color: red;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+  

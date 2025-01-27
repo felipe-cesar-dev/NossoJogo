@@ -99,16 +99,18 @@ body {
 /* Personagens */
 
 #objeto {
-  width: 34px;
+  width: 32px;
   height: 34px;
+  margin-left: 1px;
+  margin-top: 1px;
   background-image: url('./images/personagens/Leonidas.jpg');
   background-size: cover;
-  border: 3px solid rgb(0, 14, 138);
+  border: 2px solid rgb(0, 14, 138);
   cursor: pointer;
 }
 
 #objeto:hover{
-  border:3px solid rgb(1, 4, 38);
+  border:2px solid rgb(1, 4, 38);
   transition: 0.5s;
 }
 

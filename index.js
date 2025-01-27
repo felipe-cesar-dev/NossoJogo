@@ -1,36 +1,16 @@
-const verdeDivs = document.querySelectorAll('.verde');
-
-verdeDivs.forEach(div => {
-  div.onclick = () => {
-    alert('OTÁRIO!!!');
-  };
-});
-
-const amareloDivs = document.querySelectorAll('.amarelo');
-
-  amareloDivs.forEach(div => {
-  div.onclick = () => {
-    alert('OTÁRIO!!!');
-  };
-});
-
-const azulDivs = document.querySelectorAll('.azul');
-
-azulDivs.forEach(div => {
-  div.onclick = () => {
-    alert('OTÁRIO!!!');
-  };
-});
 
 
 const objeto = document.getElementById('objeto');
-const vdivs = document.querySelectorAll('.verde');
+const bloco = document.querySelectorAll('.bloco');
+const porta = document.querySelectorAll('.porta');
+const combate = document.querySelectorAll('.blocoDeCombate');
+const nado = document.querySelectorAll('.areaDeNado');
 
 objeto.addEventListener('dragstart', (event) => {
   event.dataTransfer.setData('text', objeto.id);
 });
 
-vdivs.forEach((div) => {
+bloco.forEach((div) => {
   div.addEventListener('dragover', (event) => {
     event.preventDefault();
   });
@@ -44,13 +24,13 @@ vdivs.forEach((div) => {
 });
 
 
-const adivs = document.querySelectorAll('.azul');
+
 
 objeto.addEventListener('dragstart', (event) => {
   event.dataTransfer.setData('text', objeto.id);
 });
 
-adivs.forEach((div) => {
+porta.forEach((div) => {
   div.addEventListener('dragover', (event) => {
     event.preventDefault();
   });
@@ -63,13 +43,25 @@ adivs.forEach((div) => {
   });
 });
 
-const amdivs = document.querySelectorAll('.amarelo');
 
 objeto.addEventListener('dragstart', (event) => {
   event.dataTransfer.setData('text', objeto.id);
 });
 
-amdivs.forEach((div) => {
+combate.forEach((div) => {
+  div.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+
+  div.addEventListener('drop', (event) => {
+    event.preventDefault();
+    const objetoId = event.dataTransfer.getData('text');
+    const objeto = document.getElementById(objetoId);
+    div.appendChild(objeto);
+  });
+});
+
+nado.forEach((div) => {
   div.addEventListener('dragover', (event) => {
     event.preventDefault();
   });

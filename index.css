@@ -1,5 +1,10 @@
+:root {
+  --cor-principal: #2bbbef23;
+  --passarmouse: rgba(87, 234, 79, 0.574);
+}
+
 .mapa{
-  background-color: brown;
+  background-image: url('./images/cenario.jpg');
   width: 1200px;
   height: auto;
   margin: 0 auto;
@@ -8,66 +13,62 @@
   padding: 10px;
 }
 
-.base{
-  display: flex;
+.fundoBase{
+  background-image: url(./images/baseA.jpg);
 }
 
-.bloco {
-  width: 40px;
-  height: 40px;
-  background-color: green;
-  border: 1px solid black;
-}
-
-.barreira{
-  display: flex;
+.fundoBaseB{
+  background-image: url(./images/baseB.jpeg);
 }
 
 .muro{
   width: 545px;
   height: 40px;
-  background-color: black;
+  background-image: url('./images/muro.jpg');
   border: 1px solid black;  
+  cursor: pointer;
 }
 
-.porta{
-  height: 40px;
-  width: 40px;
-  background-color: blueviolet;
-  border: 1px solid black;
+.portao{
+  background-image: url('./images/blococimento.jpg');
 }
 
 /* Campo de Batalha*/
 
-.campoBatalha{
-  display: flex;
+.fundoCampoBatalha {
+  background-image: url('./images/campodebatalha.jpg')
 }
 
-.blocoDeCombate {
-  width: 40px;
-  height: 40px;
-  background-color: rgb(251, 191, 10);
-  border: 1px solid black;
+.blocoDeCombate:hover{
+  background-color: var(--passarmouse);
+  transition: 0.5s;
 }
 
 /* Mar */
-.mar{
-  display: flex;
-}
-
-.areaDeNado {
-  width: 40px;
-  height: 40px;
-  background-color: rgb(27, 2, 127);
-  border: 1px solid black;
+.fundoMar{
+  background-image: url('./images/mar.jpg');
 }
 
 #objeto {
-  width: 18px;
-  height: 18px;
+  width: 39px;
+  height: 39px;
   background-color: red;
   border: 1px solid black;
-  margin: 5px;
+  cursor: pointer;
 }
 
-  
+.base, .barreira, .campoBatalha, .mar{
+  display: flex;
+}
+
+.bloco, .blocoDeCombate, .areaDeNado, .porta{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.bloco:hover, .porta:hover, .areaDeNado:hover{
+  background-color: var(--passarmouse);
+  transition: 0.5s;
+}

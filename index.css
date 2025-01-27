@@ -4,6 +4,7 @@
 }
 
 body {
+  width: 100vw;
   background: linear-gradient(to bottom, #640505, #14144a);
 }
 

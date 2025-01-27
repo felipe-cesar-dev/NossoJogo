@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop</title>
+	<style>
+		#container {
+			display: flex;
+
+		}
+
+		#container2{
+			display: flex;
+		}
+		
+		.div {
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			border: 1px solid black;
+			padding: 10px;
+		}
+		
+		#objeto {
+			width: 50px;
+			height: 50px;
+			background-color: red;
+			border: 1px solid black;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<section id="container">
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div">	
+		</div>
+	</section>
+	<section id="container2">
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div">	
+		</div>
+	</section>
+		<div><div id="objeto" draggable="true"></div></div>
+
+	<script>
+		const objeto = document.getElementById('objeto');
+		const divs = document.querySelectorAll('.div');
+
+		objeto.addEventListener('dragstart', (event) => {
+			event.dataTransfer.setData('text', objeto.id);
+		});
+
+		divs.forEach((div) => {
+			div.addEventListener('dragover', (event) => {
+				event.preventDefault();
+			});
+
+			div.addEventListener('drop', (event) => {
+				event.preventDefault();
+				const objetoId = event.dataTransfer.getData('text');
+				const objeto = document.getElementById(objetoId);
+				div.appendChild(objeto);
+			});
+		});
+	</script>
+</body>
+</html>

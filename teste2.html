@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Girar Div</title>
+  <style>
+    #div-girar {
+      width: 200px;
+      height: 200px;
+      background-color: #f2f2f2;
+      transition: transform 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="div-girar">Girar</div>
+  <button id="botao-girar">Girar</button>
+
+  <script>
+    document.getElementById('botao-girar').addEventListener('click', function() {
+      var div = document.getElementsByClassName('.mapa');
+      div.style.transform = 'rotate(180deg)';
+    });
+  </script>
+</body>
+</html>

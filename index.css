@@ -3,6 +3,10 @@
   --passarmouse: rgba(87, 234, 79, 0.574);
 }
 
+body {
+  background: linear-gradient(to bottom, #640505, #14144a);
+}
+
 .mapa{
   background-image: url('./images/cenario.jpg');
   width: 1200px;
@@ -20,6 +24,49 @@
 .fundoBaseB{
   background-image: url(./images/baseB.jpeg);
 }
+
+/* Navegação */
+
+.navegacao{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(22, 34, 34);
+  width: 0 auto;
+  border-bottom: 10px solid black;
+}
+
+.girarBotao{
+  border-radius: 20px;
+  cursor: pointer;
+  color: antiquewhite;
+  background-color: rgb(79, 6, 6);
+  padding: 7px;
+}
+
+.girarBotao:hover{
+  background-color:rgb(108, 8, 8);
+  transition: 0.5s;
+  font-size: small;
+}
+
+/* Cartas */
+
+.cartas {
+  width: 0 auto;
+  height: 50px;
+  background-color: rgb(61, 61, 61);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: 0px 7px 8px 0px black;
+}
+
+/* Base */
 
 .muro{
   width: 545px;
@@ -49,13 +96,23 @@
   background-image: url('./images/mar.jpg');
 }
 
+/* Personagens */
+
 #objeto {
-  width: 39px;
-  height: 39px;
-  background-color: red;
-  border: 1px solid black;
+  width: 35px;
+  height: 35px;
+  background-image: url('./images/personagens/Leonidas.jpg');
+  background-size: cover;
+  border: 3px solid rgb(0, 14, 138);
   cursor: pointer;
 }
+
+#objeto:hover{
+  border:3px solid rgb(1, 4, 38);
+  transition: 0.5s;
+}
+
+/* Generalização*/
 
 .base, .barreira, .campoBatalha, .mar{
   display: flex;
@@ -66,9 +123,11 @@
   height: 40px;
   border: 1px solid black;
   cursor: pointer;
+  background-color: #14144a4b;
 }
 
 .bloco:hover, .porta:hover, .areaDeNado:hover{
   background-color: var(--passarmouse);
   transition: 0.5s;
 }
+

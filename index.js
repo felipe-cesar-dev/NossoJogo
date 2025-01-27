@@ -73,3 +73,17 @@ nado.forEach((div) => {
     div.appendChild(objeto);
   });
 });
+
+
+///girar mapa
+let mapaGirado = false;
+
+document.querySelector('.girarBotao').addEventListener('click', function() {
+  if (!mapaGirado) {
+    document.querySelector('.mapa').style.transform = 'rotate(180deg)';
+    mapaGirado = true;
+  } else {
+    document.querySelector('.mapa').style.transform = 'rotate(0deg)';
+    mapaGirado = false;
+  }
+});

@@ -1,4 +1,4 @@
-
+///Arrastar elementos
 
 const objeto = document.getElementById('objeto');
 const bloco = document.querySelectorAll('.bloco');
@@ -73,6 +73,24 @@ nado.forEach((div) => {
     div.appendChild(objeto);
   });
 });
+ 
+
+/// Arrastar navegação
+
+function dragStart(event) {
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  event.preventDefault();
+  var id = event.dataTransfer.getData("text");
+  var elementoArrastado = document.getElementById(id);
+  event.target.appendChild(elementoArrastado);
+}
 
 
 ///girar mapa

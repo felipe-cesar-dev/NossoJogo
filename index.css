@@ -37,7 +37,7 @@ body {
   border-bottom: 10px solid black;
 }
 
-.girarBotao{
+.girarBotao, .gerarCartas{
   border-radius: 20px;
   cursor: pointer;
   color: antiquewhite;
@@ -48,7 +48,6 @@ body {
 .girarBotao:hover{
   background-color:rgb(108, 8, 8);
   transition: 0.5s;
-  font-size: small;
 }
 
 /* Cartas */
@@ -64,6 +63,19 @@ body {
   margin-bottom: 10px;
   border-radius: 0px 0px 20px 20px;
   box-shadow: 0px 7px 8px 0px black;
+}
+
+.deck{
+  background-color: #070704;
+  display: flex;
+  gap: 4px;
+  padding: 7px;
+  border-radius: 10px;
+  width: 500px;
+}
+
+.gerarCartas:hover{
+  background-color:rgb(108, 8, 8) ;
 }
 
 /* Base */
@@ -98,7 +110,7 @@ body {
 
 /* Personagens */
 
-#objeto {
+.objeto {
   width: 32px;
   height: 34px;
   margin-left: 1px;
@@ -109,7 +121,7 @@ body {
   cursor: pointer;
 }
 
-#objeto:hover{
+.objeto:hover{
   border:2px solid rgb(1, 4, 38);
   transition: 0.5s;
 }

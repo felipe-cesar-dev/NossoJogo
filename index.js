@@ -1,6 +1,6 @@
 ///Arrastar elementos
 
-const objeto = document.getElementById('objeto');
+/*const objeto = document.getElementById('objeto');
 const bloco = document.querySelectorAll('.bloco');
 const porta = document.querySelectorAll('.porta');
 const combate = document.querySelectorAll('.blocoDeCombate');
@@ -22,9 +22,6 @@ bloco.forEach((div) => {
     div.appendChild(objeto);
   });
 });
-
-
-
 
 objeto.addEventListener('dragstart', (event) => {
   event.dataTransfer.setData('text', objeto.id);
@@ -72,7 +69,7 @@ nado.forEach((div) => {
     const objeto = document.getElementById(objetoId);
     div.appendChild(objeto);
   });
-});
+});*/
  
 
 /// Arrastar navegação
@@ -105,3 +102,32 @@ document.querySelector('.girarBotao').addEventListener('click', function() {
     mapaGirado = false;
   }
 });
+
+
+///clicar e mover o personagem
+
+let objetoSelecionado = null;
+
+function selecionarObjeto(objeto) {
+  objetoSelecionado = objeto;
+}
+
+document.querySelectorAll('.objeto').forEach(function(objeto) {
+  objeto.addEventListener('click', function() {
+    selecionarObjeto(this);
+  });
+});
+document.querySelectorAll('.bloco, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
+  alvo.addEventListener('click', function() {
+    if (objetoSelecionado) {
+      this.appendChild(objetoSelecionado);
+      objetoSelecionado.addEventListener('click', function() {
+        selecionarObjeto(this);
+      });
+    }
+  });
+});
+
+
+///Gerar Cartas
+

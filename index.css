@@ -33,7 +33,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(22, 34, 34);
-  width: 0 auto;
+  width: 100vw;
   border-bottom: 10px solid black;
 }
 
@@ -54,7 +54,7 @@ body {
 /* Cartas */
 
 .cartas {
-  width: 0 auto;
+  width: 100vw;
   height: 50px;
   background-color: rgb(61, 61, 61);
   padding: 5px;

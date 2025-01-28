@@ -98,16 +98,18 @@ let mapaGirado = false;
 document.querySelector('.girarBotao').addEventListener('click', function() {
   if (!mapaGirado) {
     document.querySelector('.mapa').style.transform = 'rotate(180deg)';
+    document.querySelector('.mapa').style.transition = 'transform 0.2s ease-in-out';
     mapaGirado = true;
   } else {
     document.querySelector('.mapa').style.transform = 'rotate(0deg)';
+    document.querySelector('.mapa').style.transition = 'transform 0.2s ease-in-out';
     mapaGirado = false;
   }
 });
 
 
 
-
+/// Gerar cartas
 
 class Personagem {
   constructor(nome, locomocao, classe, imgPath) {
@@ -153,9 +155,17 @@ const personagens = [
   new Personagem('Leonidas', 'a pé', 'espartano', './images/iLeonidas.jpg'),
   new Personagem('Aquiles', 'a pé', 'guerreiro', './images/iGuerreiro.jpg'),
   new Personagem('Zion', 'a pé', 'arqueiro', './images/iNinja.jpg'),
+  new Personagem('Zion', 'a pé', 'arqueiro', './images/iNinja.jpg'),
   new Personagem('Dante', 'a pé', 'berserker', './images/iBerserker.jpg'),
+  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
+  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
+  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
+  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
+  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
   new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg')
 ];
+
+
 
 let objetoSelecionado = null;
 
@@ -163,9 +173,17 @@ function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
 }
 
+//Limitar criação de cartas
+
 botaoGerarCartas.addEventListener("click", () => {
-  personagens.forEach(personagem => personagem.criarPersonagem());
+  const deck = document.querySelector(".deck");
+  const cartas = deck.querySelectorAll(".personagem");
+  if (cartas.length === 0) {
+    personagens.slice(0, 10).forEach(personagem => personagem.criarPersonagem());
+  }
 });
+
+//Movimentar personagens
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.bloco, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
@@ -179,5 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 

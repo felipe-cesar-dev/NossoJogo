@@ -17,7 +17,7 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: './image/iBerserker.jpg'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
   },
   2: {
     Nome: 'Guerreiro',
@@ -26,7 +26,7 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: './image/iGuerreiro.jpg'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
   },
   3: {
       Nome: 'Leonidas',
@@ -35,7 +35,7 @@ const Cartas = {
       Locomocao: 2,
       Perfuracao: true,
       Magia: false,
-      img: './image/iLeonidas.jpg'
+      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iLeonidas.jpg?raw=true'
   },
   4: {
       Nome: 'Ninja',
@@ -44,7 +44,7 @@ const Cartas = {
       Locomocao: 3,
       Perfuracao: true,
       Magia: false,
-      img: './image/iNinja.jpg'
+      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iNinja.jpg?raw=true'
   },
   5: {
       Nome: 'Samurai',
@@ -53,7 +53,7 @@ const Cartas = {
       Locomocao: 2,
       Perfuracao: false,
       Magia: false,
-      img: './image/iSamurai.jpg'
+      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iSamurai.jpg?raw=true'
   },
 };
 
@@ -207,7 +207,11 @@ class Personagem {
 
 const botaoGerarCartas = document.querySelector(".gerarCartas");
 const personagens = [
-  new Personagem(Cartas[0]),
+  new Personagem(Cartas[1]),
+  new Personagem(Cartas[5]),
+  new Personagem(Cartas[4]),
+  new Personagem(Cartas[3]),
+  new Personagem(Cartas[2]),
 
 ];
 

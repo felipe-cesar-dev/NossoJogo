@@ -1,7 +1,17 @@
 //Dicionario de Cartas
 
 const Cartas = {
-  Berserker: {
+  0: {
+    Nome: 'Padrão',
+    Ataque: 0,
+    Vida: 0,
+    Locomocao: 0,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://raw.githubusercontent.com/felipe-cesar-dev/imagens/refs/heads/main/estados/acre.png'
+  },
+  1: {
+    Nome: 'Berserker',
     Ataque: 40,
     Vida: 50,
     Locomocao: 2,
@@ -9,7 +19,8 @@ const Cartas = {
     Magia: false,
     img: './image/iBerserker.jpg'
   },
-  Guerreiro: {
+  2: {
+    Nome: 'Guerreiro',
     Ataque: 30,
     Vida: 60,
     Locomocao: 2,
@@ -17,7 +28,8 @@ const Cartas = {
     Magia: false,
     img: './image/iGuerreiro.jpg'
   },
-  Leonidas: {
+  3: {
+      Nome: 'Leonidas',
       Ataque: 50,
       Vida: 80,
       Locomocao: 2,
@@ -25,7 +37,8 @@ const Cartas = {
       Magia: false,
       img: './image/iLeonidas.jpg'
   },
-  Ninja: {
+  4: {
+      Nome: 'Ninja',
       Ataque: 40,
       Vida: 30,
       Locomocao: 3,
@@ -33,18 +46,16 @@ const Cartas = {
       Magia: false,
       img: './image/iNinja.jpg'
   },
-  Samurai: {
+  5: {
+      Nome: 'Samurai',
       Ataque: 35,
       Vida: 55,
       Locomocao: 2,
       Perfuracao: false,
       Magia: false,
-      img: './image/iLeonidas.jpg'
+      img: './image/iSamurai.jpg'
   },
 };
-
-
-
 
 
 ///Arrastar elementos
@@ -159,9 +170,8 @@ document.querySelector('.girarBotao').addEventListener('click', function() {
 /// Gerar cartas
 
 class Personagem {
-  constructor(locomocao, imgPath) {
-    this.locomocao = locomocao;
-    this.imgPath = imgPath;
+  constructor(cartas) {
+    this.imgPath = cartas.img;
   }
 
   criarPersonagem() {
@@ -197,16 +207,7 @@ class Personagem {
 
 const botaoGerarCartas = document.querySelector(".gerarCartas");
 const personagens = [
-  new Personagem('a pé', './images/iLeonidas.jpg'),
-  new Personagem('a pé', './images/iGuerreiro.jpg'),
-  new Personagem('a pé', './images/iLeonidas.jpg'),
-  new Personagem('a pé', './images/iGuerreiro.jpg'),
-  new Personagem('a pé', './images/iLeonidas.jpg'),
-  new Personagem('a pé', './images/iGuerreiro.jpg'),
-  new Personagem('a pé', './images/iLeonidas.jpg'),
-  new Personagem('a pé', './images/iGuerreiro.jpg'),
-  new Personagem('a pé', './images/iLeonidas.jpg'),
-  new Personagem('a pé', './images/iGuerreiro.jpg'),
+  new Personagem(Cartas[0]),
 
 ];
 

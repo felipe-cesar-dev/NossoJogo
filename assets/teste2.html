@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personagens</title>
+  <style>
+    .carta {
+      width: 200px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 10px;
+      float: left;
+    }
+    .carta img {
+      width: 100%;
+      height: 150px;
+    }
+    .carta .atributos {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personagens</h1>
+  <div id="cartas"></div>
+
+  <script>
+    const Cartas = {
+      Berserker: {
+        Ataque: 40,
+        Vida: 50,
+        Locomocao: 2,
+        Perfuracao: false,
+        Magia: false,
+        img: './iBerserker.jpg'
+      },
+      Guerreiro: {
+        Ataque: 30,
+        Vida: 60,
+        Locomocao: 2,
+        Perfuracao: false,
+        Magia: false,
+        img: './iGuerreiro.jpg'
+      }
+    };
+
+    const cartasDiv = document.getElementById('cartas');
+
+    for (const personagem in Cartas) {
+      const cartaDiv = document.createElement('div');
+      cartaDiv.className = 'carta';
+
+      const img = document.createElement('img');
+      img.src = Cartas[personagem].img;
+      cartaDiv.appendChild(img);
+
+      const atributosDiv = document.createElement('div');
+      atributosDiv.className = 'atributos';
+
+      const textoAtributos = `
+        <h2>${personagem}</h2>
+        <p>Ataque: ${Cartas[personagem].Ataque}</p>
+        <p>Vida: ${Cartas[personagem].Vida}</p>
+        <p>Locomoção: ${Cartas[personagem].Locomocao}</p>
+        <p>Perfuração: ${Cartas[personagem].Perfuracao ? 'Sim' : 'Não'}</p>
+        <p>Magia: ${Cartas[personagem].Magia ? 'Sim' : 'Não'}</p>
+      `;
+
+      atributosDiv.innerHTML = textoAtributos;
+      cartaDiv.appendChild(atributosDiv);
+
+      cartasDiv.appendChild(cartaDiv);
+    }
+  </script>
+</body>
+</html>

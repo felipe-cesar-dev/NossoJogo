@@ -1,3 +1,50 @@
+//Dicionario de Cartas
+
+const Cartas = {
+  Berserker: {
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: './image/iBerserker.jpg'
+  },
+  Guerreiro: {
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: './image/iGuerreiro.jpg'
+  },
+  Leonidas: {
+      Ataque: 50,
+      Vida: 80,
+      Locomocao: 2,
+      Perfuracao: true,
+      Magia: false,
+      img: './image/iLeonidas.jpg'
+  },
+  Ninja: {
+      Ataque: 40,
+      Vida: 30,
+      Locomocao: 3,
+      Perfuracao: true,
+      Magia: false,
+      img: './image/iNinja.jpg'
+  },
+  Samurai: {
+      Ataque: 35,
+      Vida: 55,
+      Locomocao: 2,
+      Perfuracao: false,
+      Magia: false,
+      img: './image/iLeonidas.jpg'
+  },
+};
+
+
+
 
 
 ///Arrastar elementos
@@ -112,10 +159,8 @@ document.querySelector('.girarBotao').addEventListener('click', function() {
 /// Gerar cartas
 
 class Personagem {
-  constructor(nome, locomocao, classe, imgPath) {
-    this.nome = nome;
+  constructor(locomocao, imgPath) {
     this.locomocao = locomocao;
-    this.classe = classe;
     this.imgPath = imgPath;
   }
 
@@ -152,17 +197,17 @@ class Personagem {
 
 const botaoGerarCartas = document.querySelector(".gerarCartas");
 const personagens = [
-  new Personagem('Leonidas', 'a pé', 'espartano', './images/iLeonidas.jpg'),
-  new Personagem('Aquiles', 'a pé', 'guerreiro', './images/iGuerreiro.jpg'),
-  new Personagem('Zion', 'a pé', 'arqueiro', './images/iNinja.jpg'),
-  new Personagem('Zion', 'a pé', 'arqueiro', './images/iNinja.jpg'),
-  new Personagem('Dante', 'a pé', 'berserker', './images/iBerserker.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg'),
-  new Personagem('Xin', 'a pé', 'samurai', './images/iSamurai.jpg')
+  new Personagem('a pé', './images/iLeonidas.jpg'),
+  new Personagem('a pé', './images/iGuerreiro.jpg'),
+  new Personagem('a pé', './images/iLeonidas.jpg'),
+  new Personagem('a pé', './images/iGuerreiro.jpg'),
+  new Personagem('a pé', './images/iLeonidas.jpg'),
+  new Personagem('a pé', './images/iGuerreiro.jpg'),
+  new Personagem('a pé', './images/iLeonidas.jpg'),
+  new Personagem('a pé', './images/iGuerreiro.jpg'),
+  new Personagem('a pé', './images/iLeonidas.jpg'),
+  new Personagem('a pé', './images/iGuerreiro.jpg'),
+
 ];
 
 
@@ -197,6 +242,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-
 

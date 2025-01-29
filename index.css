@@ -15,10 +15,13 @@ body {
   border: solid 5px black;
   border-radius: 20px;
   padding: 10px;
+  /*transform: perspective(500px) rotateX(10deg) rotateY(5deg);
+  transform-style: preserve-3d;*/
 }
 
 .fundoBase{
   background-image: url(./images/baseA.jpg);
+  
 }
 
 .fundoBaseB{
@@ -72,6 +75,7 @@ body {
   padding: 7px;
   border-radius: 10px;
   width: 500px;
+  height: 40px;
 }
 
 .gerarCartas:hover{

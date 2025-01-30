@@ -11,7 +11,16 @@ const Cartas = {
     img: 'https://raw.githubusercontent.com/felipe-cesar-dev/imagens/refs/heads/main/estados/acre.png'
   },
   1: {
-    Nome: 'Berserker',
+    Nome: 'Berserker#1',
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+  },
+  1: {
+    Nome: 'Berserker#1',
     Ataque: 40,
     Vida: 50,
     Locomocao: 2,
@@ -20,7 +29,34 @@ const Cartas = {
     img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
   },
   2: {
-    Nome: 'Guerreiro',
+    Nome: 'Berserker#2',
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+  },
+  3: {
+    Nome: 'Berserker#3',
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+  },
+  4: {
+    Nome: 'Berserker#4',
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+  },
+  5: {
+    Nome: 'Guerreiro#1',
     Ataque: 30,
     Vida: 60,
     Locomocao: 2,
@@ -28,7 +64,88 @@ const Cartas = {
     Magia: false,
     img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
   },
-  3: {
+  6: {
+    Nome: 'Guerreiro#2',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  7: {
+    Nome: 'Guerreiro#3',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  8: {
+    Nome: 'Guerreiro#4',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  9: {
+    Nome: 'Guerreiro#5',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  10: {
+    Nome: 'Guerreiro#6',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  11: {
+    Nome: 'Guerreiro#7',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  12: {
+    Nome: 'Guerreiro#8',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  13: {
+    Nome: 'Guerreiro#9',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  14: {
+    Nome: 'Guerreiro#10',
+    Ataque: 30,
+    Vida: 60,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+  },
+  15: {
       Nome: 'Leonidas',
       Ataque: 50,
       Vida: 80,
@@ -37,7 +154,7 @@ const Cartas = {
       Magia: false,
       img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iLeonidas.jpg?raw=true'
   },
-  4: {
+  16: {
       Nome: 'Ninja',
       Ataque: 40,
       Vida: 30,
@@ -46,7 +163,7 @@ const Cartas = {
       Magia: false,
       img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iNinja.jpg?raw=true'
   },
-  5: {
+  17: {
       Nome: 'Samurai',
       Ataque: 35,
       Vida: 55,
@@ -54,6 +171,15 @@ const Cartas = {
       Perfuracao: false,
       Magia: false,
       img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iSamurai.jpg?raw=true'
+  },
+  18: {
+    Nome: 'Berserker#5',
+    Ataque: 40,
+    Vida: 50,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
   },
 };
 
@@ -206,35 +332,34 @@ class Personagem {
 }
 
 const botaoGerarCartas = document.querySelector(".gerarCartas");
-const personagens = [
-  new Personagem(Cartas[1]),
-  new Personagem(Cartas[5]),
-  new Personagem(Cartas[4]),
-  new Personagem(Cartas[3]),
-  new Personagem(Cartas[2]),
+const deck = document.querySelector(".deck");
 
-];
+botaoGerarCartas.addEventListener("click", () => {
+  if (deck.children.length === 1) { // Verifica se o deck está vazio
+    const numerosSorteados = [];
+    for (var i = 0; i < 5; i++) {
+      let numeroAleatorio;
+      do {
+        numeroAleatorio = Math.floor(Math.random() * 18) + 1;
+      } while (numerosSorteados.includes(numeroAleatorio));
+      numerosSorteados.push(numeroAleatorio);
+      var cartaSelecionada = Cartas[numeroAleatorio];
+      var personagem = new Personagem(cartaSelecionada);
+      personagem.criarPersonagem();
+      delete Cartas[numeroAleatorio]; // Remove o índice do elemento sorteado
+      console.log(Cartas)
+    }
+  }
+});
 
-
-
+//Limitar criação de cartas
 let objetoSelecionado = null;
 
 function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
 }
 
-//Limitar criação de cartas
-
-botaoGerarCartas.addEventListener("click", () => {
-  const deck = document.querySelector(".deck");
-  const cartas = deck.querySelectorAll(".personagem");
-  if (cartas.length === 0) {
-    personagens.slice(0, 10).forEach(personagem => personagem.criarPersonagem());
-  }
-});
-
 //Movimentar personagens
-
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.bloco, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {

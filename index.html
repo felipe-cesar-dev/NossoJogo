@@ -8,15 +8,13 @@
 
 </head>
 <body>
-  <nav class="navegacao">
+  <header>  
+    <nav class="navegacao" >
     <button class="girarBotao">Girar <br> mapa</button>
-  </nav>
+  </nav></header>
 
-  <nav class="cartas" ondragover="allowDrop(event)" ondrop="drop(event)">
-    <div class="deck">
-      <button class="gerarCartas">Gerar cartas: </button>
-    </div>
-  </nav>
+
+
   
   <div class="mapa">
     <div class="fundoBase">
@@ -3522,6 +3520,12 @@
 
   
   </div> 
+
+    <footer class="cartas" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <div class="deck">
+      <button class="gerarCartas">Gerar cartas: </button>
+    </div>
+  </footer>
     
     <script src="index.js" type="module"></script>
 </body>

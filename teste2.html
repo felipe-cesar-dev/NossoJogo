@@ -10,25 +10,49 @@
     }
     th, td {
       border: 1px solid black;
-      padding: 20px;
+      width: 20px;
+      height: 20px;
       text-align: center;
     }
-
-    .fundo{
-        background-image: url(./images/areia.png);
+    tr{
+      background-image: url(./images/areia.png);
     }
   </style>
 </head>
 <body>
   <table>
     <tr class="fundo">
-      <td><div id="div-vermelha" style="width: 15px; height: 15px; background-color: red;" draggable="true"></div></td>
-      <td ></td>
+      <td><div class="div-vermelha" style="width: 15px; height: 15px; background-color: red;"></div></td>
+      <td ><div class="div-vermelha" style="width: 15px; height: 15px; background-color: red;"></div></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     <tr>
       <td></td>
       <td></td>
@@ -46,38 +70,49 @@
       <td></td>
     </tr>
   </table>
+  <button id="reset-button">Resetar Movimentações</button>
 
   <script>
-    const divVermelha = document.getElementById('div-vermelha');
+    const divsVermelhas = document.querySelectorAll('.div-vermelha');
     const celulas = document.querySelectorAll('td');
-    let celulaAtual = null;
+    let divSelecionada = null;
+    let movimentacoes = [];
 
-    divVermelha.addEventListener('dragstart', () => {
-      divVermelha.style.opacity = '0.5';
-      celulaAtual = divVermelha.parentNode;
-    });
+    divsVermelhas.forEach((div) => {
+      movimentacoes.push({ div, movimentacao: 2 });
 
-    divVermelha.addEventListener('dragend', () => {
-      divVermelha.style.opacity = '1';
-    });
-
-    celulas.forEach(celula => {
-      celula.addEventListener('dragover', (e) => {
-        e.preventDefault();
+      div.addEventListener('click', () => {
+        divSelecionada = div;
+        console.log('Div selecionada:', div);
       });
+    });
 
-      celula.addEventListener('drop', () => {
-        if (celula !== celulaAtual && (
-          celula.parentNode === celulaAtual.parentNode && (
-            celula.cellIndex === celulaAtual.cellIndex - 2 ||
-            celula.cellIndex === celulaAtual.cellIndex + 2
-          ) ||
-          celula.parentNode === celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex - 2] ||
-          celula.parentNode === celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex + 2]
-        )) {
-          celula.appendChild(divVermelha);
+    celulas.forEach((celula) => {
+      celula.addEventListener('click', () => {
+        if (divSelecionada) {
+          const celulaAtual = divSelecionada.parentNode;
+          const rowIndex = celulaAtual.parentNode.rowIndex;
+          const cellIndex = celulaAtual.cellIndex;
+          const newRow = celula.parentNode.rowIndex;
+          const newCell = celula.cellIndex;
+
+          if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
+            const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
+            if (movimentacao > 0) {
+              celula.appendChild(divSelecionada);
+              movimentacoes.find((m) => m.div === divSelecionada).movimentacao--;
+              console.log(`Movimentações restantes para a div ${divSelecionada}: ${movimentacoes.find((m) => m.div === divSelecionada).movimentacao}`);
+            }
+          } else {
+            console.log('Movimento não permitido');
+          }
         }
       });
+    });
+
+    document.getElementById('reset-button').addEventListener('click', () => {
+      movimentacoes.forEach((m) => m.movimentacao = 2);
+      console.log('Movimentações resetadas');
     });
   </script>
 </body>

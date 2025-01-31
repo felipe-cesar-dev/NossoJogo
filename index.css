@@ -9,7 +9,7 @@ body {
 
 .mapa{
   background-image: url('./images/cenario.jpg');
-  width: 1200px;
+  width: 1313px;
   height: auto;
   margin: 0 auto;
   border: solid 5px black;
@@ -91,7 +91,7 @@ footer {
 /* Base */
 
 .muro{
-  width: 545px;
+  width: 40px;
   height: 40px;
   background-image: url('./images/muro.jpg');
   border: 1px solid black;  

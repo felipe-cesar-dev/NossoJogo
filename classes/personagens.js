@@ -10,8 +10,6 @@ export default class Personagem {
     div.style.backgroundSize = 'cover';
     div.style.width = '32px';
     div.style.height = '32px';
-    div.style.marginLeft = '1px';
-    div.style.marginTop = '1px';
     div.style.border = '2px solid rgb(0,14,138)';
     div.style.cursor = 'pointer';
 

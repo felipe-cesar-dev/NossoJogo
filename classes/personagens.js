@@ -39,6 +39,7 @@ export default class Personagem {
 
 let objetoSelecionado = null;
 let movimentacoes = [];
+let posicaoInicial = null;
 
 function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
@@ -63,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             this.appendChild(objetoSelecionado);
             movimentacao.contador++;
             movimentacao.primeiraMovimentacao = false;
+            posicaoInicial = this;
             objetoSelecionado.addEventListener('click', function() {
               selecionarObjeto(this);
             });
@@ -72,12 +74,17 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           if (movimentacao.contador < 2) {
             if (alvo.children.length === 0) {
-              this.innerHTML = "";
-              this.appendChild(objetoSelecionado);
-              movimentacao.contador++;
-              objetoSelecionado.addEventListener('click', function() {
-                selecionarObjeto(this);
-              });
+              const posicaoAtual = this;
+              if (Math.abs(posicaoAtual.offsetLeft - posicaoInicial.offsetLeft) === Math.abs(posicaoAtual.offsetTop - posicaoInicial.offsetTop)) {
+                console.log('Movimentação na diagonal não é permitida.');
+              } else {
+                this.innerHTML = "";
+                this.appendChild(objetoSelecionado);
+                movimentacao.contador++;
+                objetoSelecionado.addEventListener('click', function() {
+                  selecionarObjeto(this);
+                });
+              }
             } else {
               console.log('Não é possível mover o objeto para essa posição, pois já há um objeto lá.');
             }

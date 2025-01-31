@@ -1,15 +1,6 @@
 //Dicionario de Cartas
 
 const Cartas = {
-  0: {
-    Nome: 'Padrão',
-    Ataque: 0,
-    Vida: 0,
-    Locomocao: 0,
-    Perfuracao: false,
-    Magia: false,
-    img: 'https://raw.githubusercontent.com/felipe-cesar-dev/imagens/refs/heads/main/estados/acre.png'
-  },
   1: {
     Nome: 'Berserker#1',
     Ataque: 40,
@@ -17,16 +8,22 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   1: {
-    Nome: 'Berserker#1',
+    Nome: 'Berserker#5',
     Ataque: 40,
     Vida: 50,
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   2: {
     Nome: 'Berserker#2',
@@ -35,7 +32,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   3: {
     Nome: 'Berserker#3',
@@ -44,7 +44,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   4: {
     Nome: 'Berserker#4',
@@ -53,7 +56,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   5: {
     Nome: 'Guerreiro#1',
@@ -62,7 +68,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   6: {
     Nome: 'Guerreiro#2',
@@ -71,7 +80,13 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   7: {
     Nome: 'Guerreiro#3',
@@ -80,7 +95,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   8: {
     Nome: 'Guerreiro#4',
@@ -89,7 +107,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   9: {
     Nome: 'Guerreiro#5',
@@ -98,7 +119,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   10: {
     Nome: 'Guerreiro#6',
@@ -107,7 +131,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   11: {
     Nome: 'Guerreiro#7',
@@ -116,7 +143,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   12: {
     Nome: 'Guerreiro#8',
@@ -125,7 +155,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   13: {
     Nome: 'Guerreiro#9',
@@ -134,7 +167,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   14: {
     Nome: 'Guerreiro#10',
@@ -143,34 +179,46 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iGuerreiro.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   15: {
-      Nome: 'Leonidas',
-      Ataque: 50,
-      Vida: 80,
-      Locomocao: 2,
-      Perfuracao: true,
-      Magia: false,
-      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iLeonidas.jpg?raw=true'
+    Nome: 'Leonidas',
+    Ataque: 50,
+    Vida: 80,
+    Locomocao: 2,
+    Perfuracao: true,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iLeonidas.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   16: {
-      Nome: 'Ninja',
-      Ataque: 40,
-      Vida: 30,
-      Locomocao: 3,
-      Perfuracao: true,
-      Magia: false,
-      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iNinja.jpg?raw=true'
+    Nome: 'Ninja#1',
+    Ataque: 40,
+    Vida: 30,
+    Locomocao: 3,
+    Perfuracao: true,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iNinja.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   17: {
-      Nome: 'Samurai',
-      Ataque: 35,
-      Vida: 55,
-      Locomocao: 2,
-      Perfuracao: false,
-      Magia: false,
-      img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iSamurai.jpg?raw=true'
+    Nome: 'Samurai#1',
+    Ataque: 35,
+    Vida: 55,
+    Locomocao: 2,
+    Perfuracao: false,
+    Magia: false,
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iSamurai.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
   18: {
     Nome: 'Berserker#5',
@@ -179,7 +227,10 @@ const Cartas = {
     Locomocao: 2,
     Perfuracao: false,
     Magia: false,
-    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true'
+    img: 'https://github.com/felipe-cesar-dev/imagens/blob/main/iBerserker.jpg?raw=true',
+    voar: false,
+    andar: true,
+    nadar: false,
   },
 };
 
@@ -335,19 +386,22 @@ const botaoGerarCartas = document.querySelector(".gerarCartas");
 const deck = document.querySelector(".deck");
 
 botaoGerarCartas.addEventListener("click", () => {
-  if (deck.children.length === 1) { // Verifica se o deck está vazio
-    const numerosSorteados = [];
-    for (var i = 0; i < 5; i++) {
-      let numeroAleatorio;
-      do {
-        numeroAleatorio = Math.floor(Math.random() * 18) + 1;
-      } while (numerosSorteados.includes(numeroAleatorio));
-      numerosSorteados.push(numeroAleatorio);
-      var cartaSelecionada = Cartas[numeroAleatorio];
-      var personagem = new Personagem(cartaSelecionada);
-      personagem.criarPersonagem();
-      delete Cartas[numeroAleatorio]; // Remove o índice do elemento sorteado
-      console.log(Cartas)
+  if (Object.keys(Cartas).length === 0) {
+    console.log("O dicionário Cartas está vazio!");
+  } else {
+    if (deck.children.length === 1) { // Verifica se o deck está vazio
+      const cartasDisponiveis = Object.keys(Cartas);
+      const cartasASortear = Math.min(cartasDisponiveis.length, 5);
+      for (var i = 0; i < cartasASortear; i++) {
+        const indiceAleatorio = Math.floor(Math.random() * cartasDisponiveis.length);
+        const numeroAleatorio = cartasDisponiveis[indiceAleatorio];
+        cartasDisponiveis.splice(indiceAleatorio, 1);
+        var cartaSelecionada = Cartas[numeroAleatorio];
+        var personagem = new Personagem(cartaSelecionada);
+        personagem.criarPersonagem();
+        delete Cartas[numeroAleatorio]; // Remove o índice do elemento sorteado
+      }
+      console.log("Cartas sorteadas com sucesso!");
     }
   }
 });

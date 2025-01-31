@@ -51,6 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.blocoEntrada, .bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {
       if (objetoSelecionado) {
+        if (alvo.children.length > 0) {
+          console.log('Não é possível mover o objeto para essa posição, pois já há um objeto lá.');
+          return;
+        }
+
         const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
         if (movimentacao.primeiraMovimentacao) {
           if (alvo.classList.contains('blocoEntrada')) {

@@ -39,12 +39,11 @@ export default class Personagem {
 
 let objetoSelecionado = null;
 let movimentacoes = [];
-let primeiraMovimentacao = true;
 
 function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
-  if (!movimentacoes.includes(objeto)) {
-    movimentacoes.push({ objeto, contador: 0 });
+  if (!movimentacoes.find((m) => m.objeto === objetoSelecionado)) {
+    movimentacoes.push({ objeto: objetoSelecionado, contador: 0, primeiraMovimentacao: true });
   }
 }
 
@@ -52,26 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.blocoEntrada, .bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {
       if (objetoSelecionado) {
-        if (primeiraMovimentacao) {
+        const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
+        if (movimentacao.primeiraMovimentacao) {
           if (alvo.classList.contains('blocoEntrada')) {
-            const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
-            if (movimentacao && movimentacao.contador < 2) {
-              this.innerHTML = "";
-              this.appendChild(objetoSelecionado);
-              movimentacao.contador++;
-              objetoSelecionado.addEventListener('click', function() {
-                selecionarObjeto(this);
-              });
-              primeiraMovimentacao = false;
-            } else {
-              console.log('Limite de movimentações atingido');
-            }
+            this.innerHTML = "";
+            this.appendChild(objetoSelecionado);
+            movimentacao.contador++;
+            movimentacao.primeiraMovimentacao = false;
+            objetoSelecionado.addEventListener('click', function() {
+              selecionarObjeto(this);
+            });
           } else {
             console.log('Primeira movimentação deve ser para um blocoEntrada');
           }
         } else {
-          const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
-          if (movimentacao && movimentacao.contador < 2) {
+          if (movimentacao.contador < 2) {
             this.innerHTML = "";
             this.appendChild(objetoSelecionado);
             movimentacao.contador++;

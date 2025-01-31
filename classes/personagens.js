@@ -16,7 +16,7 @@ export default class Personagem {
     div.style.cursor = 'pointer';
 
     div.addEventListener("mouseover", () => {
-      div.style.transform = "scale(1.2)";
+      div.style.transform = "scale(1.5)";
       div.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
     });
 
@@ -24,6 +24,10 @@ export default class Personagem {
       div.style.transform = "scale(1)";
       div.style.boxShadow = "none";
     });
+
+    div.addEventListener("click", () => {
+      
+    })
 
     div.addEventListener('click', function() {
       selecionarObjeto(this);

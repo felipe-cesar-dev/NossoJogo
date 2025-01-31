@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela com Div Vermelha</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .fundo{
+        background-image: url(./images/areia.png);
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr class="fundo">
+      <td><div id="div-vermelha" style="width: 15px; height: 15px; background-color: red;" draggable="true"></div></td>
+      <td ></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <script>
+    const divVermelha = document.getElementById('div-vermelha');
+    const celulas = document.querySelectorAll('td');
+    let celulaAtual = null;
+
+    divVermelha.addEventListener('dragstart', () => {
+      divVermelha.style.opacity = '0.5';
+      celulaAtual = divVermelha.parentNode;
+    });
+
+    divVermelha.addEventListener('dragend', () => {
+      divVermelha.style.opacity = '1';
+    });
+
+    celulas.forEach(celula => {
+      celula.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      celula.addEventListener('drop', () => {
+        if (celula !== celulaAtual && (
+          celula.parentNode === celulaAtual.parentNode && (
+            celula.cellIndex === celulaAtual.cellIndex - 2 ||
+            celula.cellIndex === celulaAtual.cellIndex + 2
+          ) ||
+          celula.parentNode === celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex - 2] ||
+          celula.parentNode === celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex + 2]
+        )) {
+          celula.appendChild(divVermelha);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

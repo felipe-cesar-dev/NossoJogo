@@ -60,18 +60,18 @@ header{
 
 /* Cartas */
 
-.cartas {
+footer {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 50px;
+  height: 130px;
   background-color: rgb(61, 61, 61);
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0px 0px 20px 20px;
-  box-shadow: 0px 7px 8px 0px black;
+  border-radius: 200px 200px 0px 0px;
 }
 
 .deck{
@@ -80,7 +80,7 @@ header{
   gap: 4px;
   padding: 7px;
   border-radius: 10px;
-  width: 500px;
+  width: 380px;
   height: 40px;
 }
 

@@ -1,91 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Drag and Drop</title>
-	<style>
-		#container {
-			display: flex;
-
-		}
-
-		#container2{
-			display: flex;
-		}
-		
-		.div {
-			width: 100px;
-			height: 100px;
-			background-color: #ccc;
-			border: 1px solid black;
-			padding: 10px;
-		}
-		
-		#objeto {
-			width: 50px;
-			height: 50px;
-			background-color: red;
-			border: 1px solid black;
-			padding: 10px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .quadrado {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      display: inline-block;
+      position: relative;
+    }
+    .retangulo {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      display: inline-block;
+      position: relative;
+    }
+    .personagem {
+      width: 40px;
+      height: 40px;
+      background-color: blue;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+  </style>
 </head>
 <body>
-	<section id="container">
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div">	
-		</div>
-	</section>
-	<section id="container2">
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div"></div>
-		<div class="div">	
-		</div>
-	</section>
-		<div><div id="objeto" draggable="true"></div></div>
+  <div>
+    <div class="quadrado"><div class="personagem" id="personagem"></div></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+    <div class="quadrado"></div>
+  </div>
+  <div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+    <div class="retangulo"></div>
+  </div>
 
-	<script>
-		const objeto = document.getElementById('objeto');
-		const divs = document.querySelectorAll('.div');
+  <script>
+    const personagem = document.getElementById('personagem');
+    const quadrados = document.querySelectorAll('.quadrado');
+    const retangulos = document.querySelectorAll('.retangulo');
+    let selecionado = false;
+    let indiceAtualX = 0;
+    let indiceAtualY = 0;
 
-		objeto.addEventListener('dragstart', (event) => {
-			event.dataTransfer.setData('text', objeto.id);
-		});
+    personagem.addEventListener('click', () => {
+      selecionado = true;
+    });
 
-		divs.forEach((div) => {
-			div.addEventListener('dragover', (event) => {
-				event.preventDefault();
-			});
+    quadrados.forEach((quadrado, indice) => {
+      quadrado.addEventListener('click', () => {
+        if (selecionado) {
+          if (indice === indiceAtualX + 1 || indice === indiceAtualX - 1) {
+            quadrado.appendChild(personagem);
+            indiceAtualX = indice;
+            selecionado = false;
+          }
+        }
+      });
+    });
 
-			div.addEventListener('drop', (event) => {
-				event.preventDefault();
-				const objetoId = event.dataTransfer.getData('text');
-				const objeto = document.getElementById(objetoId);
-				div.appendChild(objeto);
-			});
-		});
-	</script>
+    retangulos.forEach((retangulo, indice) => {
+      retangulo.addEventListener('click', () => {
+        if (selecionado) {
+          if (indice === indiceAtualY + 1 || indice === indiceAtualY - 1) {
+            retangulo.appendChild(personagem);
+            indiceAtualY = indice;
+            selecionado = false;
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>

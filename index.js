@@ -101,7 +101,7 @@ function drop(event) {
 
 
 
-/// Gerar cartas
+/// Gerar carta
 
 function gerarCartas() {
   const botaoGerarCartas = document.querySelector(".gerarCartas");
@@ -128,3 +128,5 @@ function gerarCartas() {
 }
 
 gerarCartas()
+
+

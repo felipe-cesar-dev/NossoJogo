@@ -39,21 +39,32 @@ export default class Personagem {
 
 //Limitar criação de cartas
 let objetoSelecionado = null;
+let movimentacoes = [];
 
 function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
+  if (!movimentacoes.includes(objeto)) {
+    movimentacoes.push({ objeto, contador: 0 });
+  }
 }
 
-//Movimentar personagens
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {
       if (objetoSelecionado) {
-        this.appendChild(objetoSelecionado);
-        objetoSelecionado.addEventListener('click', function() {
-          selecionarObjeto(this);
-        });
+        const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
+        if (movimentacao && movimentacao.contador < 2) {
+          this.appendChild(objetoSelecionado);
+          movimentacao.contador++;
+          objetoSelecionado.addEventListener('click', function() {
+            selecionarObjeto(this);
+          });
+        } else {
+          console.log('Limite de movimentações atingido');
+        }
       }
     });
   });
 });
+
+

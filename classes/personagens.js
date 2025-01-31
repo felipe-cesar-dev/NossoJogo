@@ -46,7 +46,7 @@ function selecionarObjeto(objeto) {
 
 //Movimentar personagens
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.bloco, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
+  document.querySelectorAll('.bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {
       if (objetoSelecionado) {
         this.appendChild(objetoSelecionado);

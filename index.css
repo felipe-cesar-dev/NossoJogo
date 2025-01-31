@@ -23,13 +23,17 @@ body {
 
 .fundoBase{
   background-image: url(./images/baseA.jpg);
-  background-repeat: repeat;
   
 }
 
 .fundoBaseB{
   background-image: url(./images/baseA.jpg);
 }
+
+.barreira {
+  background-image: url('./images/muro.jpg');
+}
+
 
 /* Navegação */
 header{
@@ -90,17 +94,7 @@ footer {
 
 /* Base */
 
-.muro{
-  width: 40px;
-  height: 40px;
-  background-image: url('./images/muro.jpg');
-  border: 1px solid black;  
-  cursor: pointer;
-}
 
-.porta{
-  background-image: url('./images/chão.jpg');
-}
 
 /* Campo de Batalha*/
 
@@ -108,10 +102,14 @@ footer {
   background-image: url('./images/campodebatalha.jpg')
 }
 
-.blocoDeCombate:hover{
-  background-color: var(--passarmouse);
-  transition: 0.5s;
+.fundoMarAreiaInvertido{
+  background-image: url('./images/marareiaInvertido.jpg');
 }
+
+.fundoMarAreia{
+  background-image: url('./images/marareia.jpg');
+}
+
 
 /* Mar */
 .fundoMar{
@@ -132,16 +130,24 @@ footer {
   display: flex;
 }
 
-.bloco, .blocoDeCombate, .areaDeNado, .porta{
+.porta{
+  background-image: url('./images/chão.jpg');
+}
+
+.bloco,.marAreiaI, .marAreia,.muro, .blocoDeCombate, .areaDeNado, .porta{
   width: 40px;
   height: 40px;
   border: 1px solid black;
   cursor: pointer;
-  background-color: #14144a4b;
+  background-color: #00000014;
 }
 
-.bloco:hover, .porta:hover, .areaDeNado:hover{
+
+.bloco:hover, .marAreiaI:hover, .marAreia:hover, .marAreia:hover .porta:hover, .areaDeNado:hover, .blocoDeCombate:hover, .muro:hover{
   background-color: var(--passarmouse);
   transition: 0.5s;
 }
+
+
+
 

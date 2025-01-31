@@ -57,27 +57,42 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
         const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
-        if (movimentacao.resetado) {
-          if (movimentacao.contador < 2) {
+        if (movimentacao.primeiraMovimentacao) {
+          if (alvo.classList.contains('blocoEntrada')) {
             this.innerHTML = "";
             this.appendChild(objetoSelecionado);
             movimentacao.contador++;
+            movimentacao.primeiraMovimentacao = false;
+            posicaoInicial = this;
+            objetoSelecionado.addEventListener('click', function() {
+              selecionarObjeto(this);
+            });
           } else {
-            console.log('Limite de movimentações atingido');
+            console.log('Primeira movimentação deve ser para um blocoEntrada');
           }
         } else {
-          if (movimentacao.primeiraMovimentacao) {
-            if (alvo.classList.contains('blocoEntrada')) {
-              this.innerHTML = "";
-              this.appendChild(objetoSelecionado);
-              movimentacao.contador++;
-              movimentacao.primeiraMovimentacao = false;
-              posicaoInicial = this;
-              objetoSelecionado.addEventListener('click', function() {
-                selecionarObjeto(this);
-              });
+          if (movimentacao.resetado) {
+            if (movimentacao.contador < 2) {
+              if (alvo.children.length === 0) {
+                const posicaoAtual = this;
+                const diferencaX = Math.abs(posicaoAtual.offsetLeft - posicaoInicial.offsetLeft);
+                const diferencaY = Math.abs(posicaoAtual.offsetTop - posicaoInicial.offsetTop);
+                if (diferencaX <= 50 && diferencaY <= 50 && !(diferencaX > 0 && diferencaY > 0)) {
+                  this.innerHTML = "";
+                  this.appendChild(objetoSelecionado);
+                  movimentacao.contador++;
+                  objetoSelecionado.addEventListener('click', function() {
+                    selecionarObjeto(this);
+                  });
+                  posicaoInicial = this; // Atualiza a posição inicial
+                } else {
+                  console.log('Movimentação inválida');
+                }
+              } else {
+                console.log('Não é possível mover o objeto para essa posição, pois já há um objeto lá.');
+              }
             } else {
-              console.log('Primeira movimentação deve ser para um blocoEntrada');
+              console.log('Limite de movimentações atingido');
             }
           } else {
             if (movimentacao.contador < 2) {
@@ -92,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   objetoSelecionado.addEventListener('click', function() {
                     selecionarObjeto(this);
                   });
+                  posicaoInicial = this; // Atualiza a posição inicial
                 } else {
                   console.log('Movimentação inválida');
                 }
@@ -109,12 +125,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.querySelector('.resetar').addEventListener('click', function() {
-  movimentacoes.forEach(function(movimentacao) {
-    movimentacao.contador = 0;
-    movimentacao.primeiraMovimentacao = false;
-    movimentacao.resetado = true;
-  });
+  const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
+  movimentacao.contador = 0;
+  movimentacao.resetado = true;
+  console.log('Movimentação resetada');
 });
+
+
+
+
+
+
+
 
 
 

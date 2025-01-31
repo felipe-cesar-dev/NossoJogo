@@ -71,12 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else {
           if (movimentacao.contador < 2) {
-            this.innerHTML = "";
-            this.appendChild(objetoSelecionado);
-            movimentacao.contador++;
-            objetoSelecionado.addEventListener('click', function() {
-              selecionarObjeto(this);
-            });
+            if (alvo.children.length === 0) {
+              this.innerHTML = "";
+              this.appendChild(objetoSelecionado);
+              movimentacao.contador++;
+              objetoSelecionado.addEventListener('click', function() {
+                selecionarObjeto(this);
+              });
+            } else {
+              console.log('Não é possível mover o objeto para essa posição, pois já há um objeto lá.');
+            }
           } else {
             console.log('Limite de movimentações atingido');
           }

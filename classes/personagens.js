@@ -37,9 +37,9 @@ export default class Personagem {
 }
 
 
-//Limitar criação de cartas
 let objetoSelecionado = null;
 let movimentacoes = [];
+let primeiraMovimentacao = true;
 
 function selecionarObjeto(objeto) {
   objetoSelecionado = objeto;
@@ -49,18 +49,38 @@ function selecionarObjeto(objeto) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
+  document.querySelectorAll('.blocoEntrada, .bloco, .marAreia, .marAreiaI, .porta, .blocoDeCombate, .areaDeNado').forEach(function(alvo) {
     alvo.addEventListener('click', function() {
       if (objetoSelecionado) {
-        const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
-        if (movimentacao && movimentacao.contador < 2) {
-          this.appendChild(objetoSelecionado);
-          movimentacao.contador++;
-          objetoSelecionado.addEventListener('click', function() {
-            selecionarObjeto(this);
-          });
+        if (primeiraMovimentacao) {
+          if (alvo.classList.contains('blocoEntrada')) {
+            const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
+            if (movimentacao && movimentacao.contador < 2) {
+              this.innerHTML = "";
+              this.appendChild(objetoSelecionado);
+              movimentacao.contador++;
+              objetoSelecionado.addEventListener('click', function() {
+                selecionarObjeto(this);
+              });
+              primeiraMovimentacao = false;
+            } else {
+              console.log('Limite de movimentações atingido');
+            }
+          } else {
+            console.log('Primeira movimentação deve ser para um blocoEntrada');
+          }
         } else {
-          console.log('Limite de movimentações atingido');
+          const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
+          if (movimentacao && movimentacao.contador < 2) {
+            this.innerHTML = "";
+            this.appendChild(objetoSelecionado);
+            movimentacao.contador++;
+            objetoSelecionado.addEventListener('click', function() {
+              selecionarObjeto(this);
+            });
+          } else {
+            console.log('Limite de movimentações atingido');
+          }
         }
       }
     });

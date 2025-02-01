@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   objetoSelecionado.addEventListener('click', function() {
                     selecionarObjeto(this);
                   });
-                  posicaoInicial = this; // Atualiza a posição inicial
+                  posicaoInicial = this;
                 } else {
                   console.log('Movimentação inválida');
                 }
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   objetoSelecionado.addEventListener('click', function() {
                     selecionarObjeto(this);
                   });
-                  posicaoInicial = this; // Atualiza a posição inicial
+                  posicaoInicial = this;
                 } else {
                   console.log('Movimentação inválida');
                 }
@@ -125,24 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.querySelector('.resetar').addEventListener('click', function() {
-  const movimentacao = movimentacoes.find((m) => m.objeto === objetoSelecionado);
-  movimentacao.contador = 0;
-  movimentacao.resetado = true;
-  console.log('Movimentação resetada');
+  movimentacoes.forEach(movimentacao => {
+    movimentacao.contador = 0;
+    movimentacao.resetado = true;
+  });
+  console.log('Movimentações resetadas');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

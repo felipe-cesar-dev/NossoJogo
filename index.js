@@ -29,6 +29,8 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
   celula.appendChild(carta);
+  delete Cartas[numeroAleatorio]; // Remove a carta do dicionário
+  console.log(Object.keys(Cartas))
   return carta;
 }
 
@@ -36,12 +38,17 @@ function criarCarta(celula, numeroAleatorio) {
 function gerarCartasNaTela() {
   const primeiraLinhaCelulas = Array.from(celulas).slice(0, 5);
   if (primeiraLinhaCelulas.every((celula) => celula.children.length === 0)) {
-    for (let i = 0; i < 5; i++) {
+    const cartasDisponiveis = Object.keys(Cartas).length;
+    const cartasParaGerar = Math.min(cartasDisponiveis, 5);
+    for (let i = 0; i < cartasParaGerar; i++) {
       const celula = primeiraLinhaCelulas[i];
       const numeroAleatorio = gerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
       const carta = criarCarta(celula, numeroAleatorio);
       adicionarMovimentacao(carta);
+    }
+    if (cartasDisponiveis < 5) {
+      console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
     }
   } else {
     console.log('As células da primeira linha não estão vazias');

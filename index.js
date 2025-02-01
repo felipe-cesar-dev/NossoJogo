@@ -6,15 +6,16 @@ const celulas = document.querySelectorAll('td');
 let divSelecionada = null;
 let movimentacoes = [];
 
-// Função para gerar um número aleatório entre 1 e o número de cartas
+// Função para gerar um número aleatório entre 1 e 18
 let numerosRepetidos = [];
-
 function gerarNumeroAleatorio() {
   let numeroAleatorio;
   do {
-    numeroAleatorio = Math.floor(Math.random() * Object.keys(Cartas).length) + 1;
-  } while (numerosRepetidos.includes(numeroAleatorio)); // Evita repetição de cartas
-  numerosRepetidos.push(numeroAleatorio); // Adiciona o número sorteado ao array
+    numeroAleatorio = Math.floor(Math.random() * 18) + 1;
+  } while (numerosRepetidos.includes(numeroAleatorio));
+  // Evita repetição de cartas
+  numerosRepetidos.push(numeroAleatorio);
+  // Adiciona o número sorteado ao array
   return numeroAleatorio;
 }
 
@@ -38,6 +39,7 @@ function gerarCartasNaTela() {
     for (let i = 0; i < 5; i++) {
       const celula = primeiraLinhaCelulas[i];
       const numeroAleatorio = gerarNumeroAleatorio();
+      console.log(`Número sorteado: ${numeroAleatorio}`);
       const carta = criarCarta(celula, numeroAleatorio);
       adicionarMovimentacao(carta);
     }
@@ -74,7 +76,6 @@ function moverCarta(celula) {
       if (movimentacao > 0) {
         celula.appendChild(divSelecionada);
         movimentacoes.find((m) => m.div === divSelecionada).movimentacao--;
-        console.log(`Movimentações restantes para a div ${divSelecionada}: ${movimentacoes.find((m) => m.div === divSelecionada).movimentacao}`);
       }
     } else {
       console.log('Movimento não permitido');

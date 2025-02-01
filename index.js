@@ -57,8 +57,8 @@ function criarCarta(celula, numeroAleatorio) {
   // Adicionar as propriedades da carta ao objeto carta
   carta.props = {
     Nome: cartaProps.Nome,
-    Ataque: cartaProps.Ataque,
-    Vida: cartaProps.Vida,
+    Ataque: parseInt(cartaProps.Ataque),
+    Vida: parseInt(cartaProps.Vida),
     Locomocao: parseInt(cartaProps.Locomocao),
     Perfuracao: cartaProps.Perfuracao,
     Magia: cartaProps.Magia,

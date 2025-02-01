@@ -31,15 +31,6 @@ function criarCarta(celula, numeroAleatorio) {
   return carta;
 }
 
-// Função para adicionar uma carta ao array movimentacoes
-function adicionarMovimentacao(carta) {
-  movimentacoes.push({ div: carta, movimentacao: 2 });
-  carta.addEventListener('click', () => {
-    divSelecionada = carta;
-    console.log('Div selecionada:', carta);
-  });
-}
-
 // Função para gerar cartas
 function gerarCartasNaTela() {
   const primeiraLinhaCelulas = Array.from(celulas).slice(0, 5);
@@ -53,6 +44,21 @@ function gerarCartasNaTela() {
   } else {
     console.log('As células da primeira linha não estão vazias');
   }
+}
+
+// Adiciona o evento de clique ao botão gerar cartas
+gerarCartas.addEventListener('click', () => {
+  gerarCartasNaTela();
+});
+
+
+// Função para adicionar uma carta ao array movimentacoes
+function adicionarMovimentacao(carta) {
+  movimentacoes.push({ div: carta, movimentacao: 2 });
+  carta.addEventListener('click', () => {
+    divSelecionada = carta;
+    console.log('Div selecionada:', carta);
+  });
 }
 
 // Função para mover uma carta
@@ -83,10 +89,6 @@ celulas.forEach((celula) => {
   });
 });
 
-// Adiciona o evento de clique ao botão gerar cartas
-gerarCartas.addEventListener('click', () => {
-  gerarCartasNaTela();
-});
 
 // Adiciona o evento de clique ao botão reset
 document.getElementById('reset-button').addEventListener('click', () => {

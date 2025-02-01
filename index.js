@@ -1,6 +1,7 @@
 import Cartas from "./assets/deckCartasDict.js";
 import girarMapa from "./utils/girarMapa.js";
 
+
 // Funções de interface
 
 function interfaceGerarNumeroAleatorio() {
@@ -45,8 +46,27 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
   celula.appendChild(carta);
+  
+  // Armazenar as propriedades da carta em uma variável
+  const cartaProps = Cartas[numeroAleatorio];
+  
+  // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
-  console.log(Object.keys(Cartas))
+  console.log(Object.keys(Cartas));
+  
+  // Adicionar as propriedades da carta ao objeto carta
+  carta.props = {
+    Nome: cartaProps.Nome,
+    Ataque: cartaProps.Ataque,
+    Vida: cartaProps.Vida,
+    Locomocao: parseInt(cartaProps.Locomocao),
+    Perfuracao: cartaProps.Perfuracao,
+    Magia: cartaProps.Magia,
+    voar: cartaProps.voar,
+    andar: cartaProps.andar,
+    nadar: cartaProps.nadar,
+  };
+  
   return carta;
 }
 
@@ -60,7 +80,7 @@ function gerarCartasNaTela() {
       const numeroAleatorio = interfaceGerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
       const carta = interfaceCriarCarta(celula, numeroAleatorio);
-      interfaceAdicionarMovimentacao(carta);
+      interfaceAdicionarMovimentacao(carta, numeroAleatorio);
     }
     if (cartasDisponiveis < 5) {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
@@ -71,7 +91,8 @@ function gerarCartasNaTela() {
 }
 
 function adicionarMovimentacao(carta) {
-  movimentacoes.push({ div: carta, movimentacao: 2 });
+  const locomocao = carta.props.Locomocao;
+  movimentacoes.push({ div: carta, movimentacao: locomocao });
   carta.addEventListener('click', () => {
     divSelecionada = carta;
     console.log('Div selecionada:', carta);

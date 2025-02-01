@@ -7,11 +7,14 @@ let divSelecionada = null;
 let movimentacoes = [];
 
 // Função para gerar um número aleatório entre 1 e o número de cartas
+let numerosRepetidos = [];
+
 function gerarNumeroAleatorio() {
   let numeroAleatorio;
   do {
     numeroAleatorio = Math.floor(Math.random() * Object.keys(Cartas).length) + 1;
-  } while (numeroAleatorio === Math.floor(Math.random() * 5) + 1); // Evita repetição de cartas
+  } while (numerosRepetidos.includes(numeroAleatorio)); // Evita repetição de cartas
+  numerosRepetidos.push(numeroAleatorio); // Adiciona o número sorteado ao array
   return numeroAleatorio;
 }
 

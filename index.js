@@ -1,25 +1,41 @@
 import Cartas from "./assets/deckCartasDict.js";
 import girarMapa from "./utils/girarMapa.js";
 
-const gerarCartas = document.querySelector('.gerarCartas');
-const celulas = document.querySelectorAll('td');
-let divSelecionada = null;
-let movimentacoes = [];
+// Funções de interface
 
-// Função para gerar um número aleatório entre 1 e 18
+function interfaceGerarNumeroAleatorio() {
+  return gerarNumeroAleatorio();
+}
+
+function interfaceCriarCarta(celula, numeroAleatorio) {
+  return criarCarta(celula, numeroAleatorio);
+}
+
+function interfaceGerarCartasNaTela() {
+  gerarCartasNaTela();
+}
+
+function interfaceAdicionarMovimentacao(carta) {
+  adicionarMovimentacao(carta);
+}
+
+function interfaceMoverCarta(celula) {
+  moverCarta(celula);
+}
+
+// Funções principais
+
 let numerosRepetidos = [];
+
 function gerarNumeroAleatorio() {
   let numeroAleatorio;
   do {
     numeroAleatorio = Math.floor(Math.random() * 18) + 1;
   } while (numerosRepetidos.includes(numeroAleatorio));
-  // Evita repetição de cartas
   numerosRepetidos.push(numeroAleatorio);
-  // Adiciona o número sorteado ao array
   return numeroAleatorio;
 }
 
-// Função para criar uma carta
 function criarCarta(celula, numeroAleatorio) {
   const carta = document.createElement('div');
   carta.classList.add('cartas');
@@ -29,12 +45,11 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
   celula.appendChild(carta);
-  delete Cartas[numeroAleatorio]; // Remove a carta do dicionário
+  delete Cartas[numeroAleatorio];
   console.log(Object.keys(Cartas))
   return carta;
 }
 
-// Função para gerar cartas
 function gerarCartasNaTela() {
   const primeiraLinhaCelulas = Array.from(celulas).slice(0, 5);
   if (primeiraLinhaCelulas.every((celula) => celula.children.length === 0)) {
@@ -42,10 +57,10 @@ function gerarCartasNaTela() {
     const cartasParaGerar = Math.min(cartasDisponiveis, 5);
     for (let i = 0; i < cartasParaGerar; i++) {
       const celula = primeiraLinhaCelulas[i];
-      const numeroAleatorio = gerarNumeroAleatorio();
+      const numeroAleatorio = interfaceGerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
-      const carta = criarCarta(celula, numeroAleatorio);
-      adicionarMovimentacao(carta);
+      const carta = interfaceCriarCarta(celula, numeroAleatorio);
+      interfaceAdicionarMovimentacao(carta);
     }
     if (cartasDisponiveis < 5) {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
@@ -55,13 +70,6 @@ function gerarCartasNaTela() {
   }
 }
 
-// Adiciona o evento de clique ao botão gerar cartas
-gerarCartas.addEventListener('click', () => {
-  gerarCartasNaTela();
-});
-
-
-// Função para adicionar uma carta ao array movimentacoes
 function adicionarMovimentacao(carta) {
   movimentacoes.push({ div: carta, movimentacao: 2 });
   carta.addEventListener('click', () => {
@@ -70,7 +78,6 @@ function adicionarMovimentacao(carta) {
   });
 }
 
-// Função para mover uma carta
 function moverCarta(celula) {
   if (divSelecionada) {
     const celulaAtual = divSelecionada.parentNode;
@@ -90,19 +97,27 @@ function moverCarta(celula) {
   }
 }
 
-// Adiciona o evento de clique às células
+// Variáveis globais
+const gerarCartas = document.querySelector('.gerarCartas');
+const celulas = document.querySelectorAll('td');
+let divSelecionada = null;
+let movimentacoes = [];
+
+// Eventos
+gerarCartas.addEventListener('click', () => {
+  interfaceGerarCartasNaTela();
+});
+
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {
-    moverCarta(celula);
+    interfaceMoverCarta(celula);
   });
 });
 
-
-// Adiciona o evento de clique ao botão reset
 document.getElementById('reset-button').addEventListener('click', () => {
   movimentacoes.forEach((m) => m.movimentacao = 2);
   console.log('Movimentações resetadas');
 });
 
-gerarCartasNaTela();
+interfaceGerarCartasNaTela();
 girarMapa();

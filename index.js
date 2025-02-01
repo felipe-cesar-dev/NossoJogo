@@ -80,12 +80,12 @@ function criarCarta(celula, numeroAleatorio) {
 }
 
 function gerarCartasNaTela() {
-  const primeiraLinhaCelulas = Array.from(celulas).slice(0, 10);
-  if (primeiraLinhaCelulas.every((celula) => celula.children.length === 0)) {
+  const celulasParaGerar = Array.from(celulas).slice(10, 20);
+  if (celulasParaGerar.every((celula) => celula.children.length === 0)) {
     const cartasDisponiveis = Object.keys(Cartas).length;
     const cartasParaGerar = Math.min(cartasDisponiveis, 10);
     for (let i = 0; i < cartasParaGerar; i++) {
-      const celula = primeiraLinhaCelulas[i];
+      const celula = celulasParaGerar[i];
       const numeroAleatorio = interfaceGerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
       const carta = interfaceCriarCarta(celula, numeroAleatorio);
@@ -95,7 +95,7 @@ function gerarCartasNaTela() {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
     }
   } else {
-    console.log('As células da primeira linha não estão vazias');
+    console.log('As células não estão vazias');
   }
 }
 
@@ -115,6 +115,13 @@ function moverCarta(celula) {
     const cellIndex = celulaAtual.cellIndex;
     const newRow = celula.parentNode.rowIndex;
     const newCell = celula.cellIndex;
+
+    // Verifica se a carta está tentando voltar para a linha 0
+    if (newRow === 0 && rowIndex > 0) {
+      console.log('Não é permitido voltar para a linha 0');
+      return;
+    }
+
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
       const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
       if (movimentacao > 0) {
@@ -148,6 +155,7 @@ document.getElementById('reset-button').addEventListener('click', () => {
   movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
   console.log('Movimentações resetadas');
 });
+
 
 interfaceGerarCartasNaTela();
 girarMapa();

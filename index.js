@@ -45,6 +45,15 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
+  carta.addEventListener("mouseover", () => {
+    carta.style.transition = "0.5s"
+    carta.style.transform = "scale(1.5)";
+    carta.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+  });
+  carta.addEventListener("mouseout", () => {
+    carta.style.transform = "scale(1)";
+    carta.style.boxShadow = "none";
+  });
   celula.appendChild(carta);
   
   // Armazenar as propriedades da carta em uma variável

@@ -1,132 +1,63 @@
 import Cartas from "./assets/deckCartasDict.js";
-import Personagem from "./classes/personagens.js"
-import girarMapa from "./utils/girarMapa.js";
 
-girarMapa()
+const gerarCartas = document.getElementsByClassName('.gerarCartas')
+const celulas = document.querySelectorAll('td');
+let divSelecionada = null;
+let movimentacoes = [];
 
+// Cria as divs das cartas
+for (let i = 0; i < 5; i++) {
+  const celula = celulas[i];
+  const carta = document.createElement('div');
+  carta.classList.add('cartas');
+  carta.style.width = '39px';
+  carta.style.height = '39px';
 
-///Arrastar elementos
+  // Gera um número aleatório entre 1 e o número de cartas
+  let numeroAleatorio;
+  do {
+    numeroAleatorio = Math.floor(Math.random() * Object.keys(Cartas).length) + 1;
+  } while (numeroAleatorio === i + 1); // Evita repetição de cartas
 
-/*const objeto = document.getElementById('objeto');
-const bloco = document.querySelectorAll('.bloco');
-const porta = document.querySelectorAll('.porta');
-const combate = document.querySelectorAll('.blocoDeCombate');
-const nado = document.querySelectorAll('.areaDeNado');
-
-objeto.addEventListener('dragstart', (event) => {
-  event.dataTransfer.setData('text', objeto.id);
-});
-
-bloco.forEach((div) => {
-  div.addEventListener('dragover', (event) => {
-    event.preventDefault();
-  });
-
-  div.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const objetoId = event.dataTransfer.getData('text');
-    const objeto = document.getElementById(objetoId);
-    div.appendChild(objeto);
-  });
-});
-
-objeto.addEventListener('dragstart', (event) => {
-  event.dataTransfer.setData('text', objeto.id);
-});
-
-porta.forEach((div) => {
-  div.addEventListener('dragover', (event) => {
-    event.preventDefault();
-  });
-
-  div.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const objetoId = event.dataTransfer.getData('text');
-    const objeto = document.getElementById(objetoId);
-    div.appendChild(objeto);
-  });
-});
-
-
-objeto.addEventListener('dragstart', (event) => {
-  event.dataTransfer.setData('text', objeto.id);
-});
-
-combate.forEach((div) => {
-  div.addEventListener('dragover', (event) => {
-    event.preventDefault();
-  });
-
-  div.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const objetoId = event.dataTransfer.getData('text');
-    const objeto = document.getElementById(objetoId);
-    div.appendChild(objeto);
-  });
-});
-
-nado.forEach((div) => {
-  div.addEventListener('dragover', (event) => {
-    event.preventDefault();
-  });
-
-  div.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const objetoId = event.dataTransfer.getData('text');
-    const objeto = document.getElementById(objetoId);
-    div.appendChild(objeto);
-  });
-});
- 
-
-/// Arrastar navegação
-
-function dragStart(event) {
-  event.dataTransfer.setData("text", event.target.id);
+  carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
+  carta.style.backgroundSize = 'cover';
+  carta.style.backgroundRepeat = 'no-repeat';
+  celula.appendChild(carta);
 }
 
-function allowDrop(event) {
-  event.preventDefault();
-}
+const cartas = document.querySelectorAll('.cartas');
 
-function drop(event) {
-  event.preventDefault();
-  var id = event.dataTransfer.getData("text");
-  var elementoArrastado = document.getElementById(id);
-  event.target.appendChild(elementoArrastado);
-}
-*/
+cartas.forEach((div) => {
+  movimentacoes.push({ div, movimentacao: 2 });
+  div.addEventListener('click', () => {
+    divSelecionada = div;
+    console.log('Div selecionada:', div);
+  });
+});
 
-
-
-
-
-/// Gerar carta
-
-function gerarCartas() {
-  const botaoGerarCartas = document.querySelector(".gerarCartas");
-  const deck = document.querySelector(".deck");
-
-  botaoGerarCartas.addEventListener("click", () => {
-    if (Object.keys(Cartas).length === 0) {
-      alert("O deck chegou ao final!");
-    } else {
-      if (deck.children.length === 1) {
-        // Verifica se o deck está vazio
-        const cartasDisponiveis = Object.keys(Cartas);
-        const cartasASortear = Math.min(cartasDisponiveis.length, 7);
-        for (var i = 0; i < cartasASortear; i++) {
-          const indiceAleatorio = Math.floor(Math.random() * cartasDisponiveis.length);
-          const numeroAleatorio = cartasDisponiveis[indiceAleatorio];
-          cartasDisponiveis.splice(indiceAleatorio, 1);
-          var cartaSelecionada = Cartas[numeroAleatorio];
-          var personagem = new Personagem(cartaSelecionada);
-          personagem.criarPersonagem();
-          delete Cartas[numeroAleatorio]; // Remove o índice do elemento sorteado
+celulas.forEach((celula) => {
+  celula.addEventListener('click', () => {
+    if (divSelecionada) {
+      const celulaAtual = divSelecionada.parentNode;
+      const rowIndex = celulaAtual.parentNode.rowIndex;
+      const cellIndex = celulaAtual.cellIndex;
+      const newRow = celula.parentNode.rowIndex;
+      const newCell = celula.cellIndex;
+      if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
+        const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
+        if (movimentacao > 0) {
+          celula.appendChild(divSelecionada);
+          movimentacoes.find((m) => m.div === divSelecionada).movimentacao--;
+          console.log(`Movimentações restantes para a div ${divSelecionada}: ${movimentacoes.find((m) => m.div === divSelecionada).movimentacao}`);
         }
-        console.log("Cartas sorteadas com sucesso!"); } } });
-}
+      } else {
+        console.log('Movimento não permitido');
+      }
+    }
+  });
+});
 
-gerarCartas()
-
-
+document.getElementById('reset-button').addEventListener('click', () => {
+  movimentacoes.forEach((m) => m.movimentacao = 2);
+  console.log('Movimentações resetadas');
+});

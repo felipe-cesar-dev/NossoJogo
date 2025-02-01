@@ -31,7 +31,7 @@ let numerosRepetidos = [];
 function gerarNumeroAleatorio() {
   let numeroAleatorio;
   do {
-    numeroAleatorio = Math.floor(Math.random() * 18) + 1;
+    numeroAleatorio = Math.floor(Math.random() * 27) + 1;
   } while (numerosRepetidos.includes(numeroAleatorio));
   numerosRepetidos.push(numeroAleatorio);
   return numeroAleatorio;
@@ -71,10 +71,10 @@ function criarCarta(celula, numeroAleatorio) {
 }
 
 function gerarCartasNaTela() {
-  const primeiraLinhaCelulas = Array.from(celulas).slice(0, 5);
+  const primeiraLinhaCelulas = Array.from(celulas).slice(0, 10);
   if (primeiraLinhaCelulas.every((celula) => celula.children.length === 0)) {
     const cartasDisponiveis = Object.keys(Cartas).length;
-    const cartasParaGerar = Math.min(cartasDisponiveis, 5);
+    const cartasParaGerar = Math.min(cartasDisponiveis, 10);
     for (let i = 0; i < cartasParaGerar; i++) {
       const celula = primeiraLinhaCelulas[i];
       const numeroAleatorio = interfaceGerarNumeroAleatorio();
@@ -82,7 +82,7 @@ function gerarCartasNaTela() {
       const carta = interfaceCriarCarta(celula, numeroAleatorio);
       interfaceAdicionarMovimentacao(carta, numeroAleatorio);
     }
-    if (cartasDisponiveis < 5) {
+    if (cartasDisponiveis < 10) {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
     }
   } else {

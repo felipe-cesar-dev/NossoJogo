@@ -136,7 +136,7 @@ celulas.forEach((celula) => {
 });
 
 document.getElementById('reset-button').addEventListener('click', () => {
-  movimentacoes.forEach((m) => m.movimentacao = 2);
+  movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
   console.log('Movimentações resetadas');
 });
 

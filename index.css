@@ -35,9 +35,16 @@ aside {
     top: 0;
     left: 0;
     height: 100%;
-    width: 100px; /* ajuste a largura conforme necessário */
+    width: 105px; /* ajuste a largura conforme necessário */
     background-color: #000000; /* ajuste a cor de fundo conforme necessário */
   }
+
+.exibirCarta {
+    background-color: pink;
+    height: 150px;
+    width: 100px;
+    margin-top: 300px;
+}
 
 table {
 border-collapse: collapse;
@@ -92,14 +99,3 @@ background-image: url('./images/muro.jpg');
 
 
 
-footer{
-width: 100%;
-bottom: 0;
-left: 0;
-position: fixed;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: black;
-
-}

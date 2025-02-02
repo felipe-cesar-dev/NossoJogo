@@ -38,44 +38,55 @@ function gerarNumeroAleatorio() {
 }
 
 function criarCarta(celula, numeroAleatorio) {
-  
   const carta = document.createElement('div');
   carta.classList.add('cartas');
-  carta.style.width = '39px';
-  carta.style.height = '39px';
+  carta.style.width = '40px';
+  carta.style.height = '40px';
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
-  const status = document.querySelector('aside')
+
+  const status = document.querySelector('aside');
   const textoCarta = document.createElement('div');
-  const imagem = document.querySelector('img')
-  textoCarta.style.position = 'absolute';
-  textoCarta.style.top = '0px';
-  textoCarta.style.left = '0px';
-  textoCarta.style.fontSize = '12px';
-  textoCarta.style.color = 'white';
-  status.appendChild(textoCarta);
+  const imagem = document.createElement('img'); // criar uma nova imagem para cada carta
   
 
-  carta.addEventListener("mouseover", () => {
-    carta.style.transition = "0.5s"
-    carta.style.transform = "scale(1.5)";
-    textoCarta.style.width = '39px'
-    textoCarta.style.height = '39px'
-    textoCarta.style.marginTop = '100px'
-    textoCarta.textContent = `Nome: ${carta.props.Nome} Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
-    textoCarta.style.color = 'white'
-    textoCarta.style.fontSize = '18px'
-    imagem.src = carta.props.img
-    imagem.style.width = '100px'
-    imagem.style.height = '100px'
+  imagem.style.marginTop = '150px'
+  imagem.style.display = 'none'; // inicialmente oculto
+  imagem.style.width = '100px';
+  imagem.style.height = '100px';
+
+  textoCarta.style.fontSize = '20px';
+  textoCarta.style.color = 'white';
+  textoCarta.style.display = 'none'; // inicialmente oculto
+
+
+  
+  status.appendChild(textoCarta);
+  status.appendChild(imagem);
+
+  let cartaExibida = false;
+
+  carta.addEventListener("click", () => {
+    if (!cartaExibida) {
+      textoCarta.style.display = 'block';
+      imagem.style.display = 'block';
+      imagem.src = carta.props.img;
+      textoCarta.textContent = `Nome: ${carta.props.Nome}\n\n\n Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
+      cartaExibida = true;
+    } else {
+      textoCarta.style.display = 'none';
+      imagem.style.display = 'none';
+      cartaExibida = false;
+    }
   });
 
-  carta.addEventListener("mouseout", () => {
-    carta.style.transform = "scale(1)";
-    carta.style.boxShadow = "none";
-    textoCarta.textContent = '';
-    imagem.removeAttribute('src')
+  document.addEventListener("click", function(event) {
+    if (event.target !== carta && event.target !== textoCarta && event.target !== imagem) {
+      textoCarta.style.display = 'none';
+      imagem.style.display = 'none';
+      cartaExibida = false;
+    }
   });
 
   celula.appendChild(carta);

@@ -1,6 +1,18 @@
 import Cartas from "./assets/deckCartasDict.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 
+// Variáveis globais
+const gerarCartas = document.querySelector('.gerarCartas');
+const celulas = document.querySelectorAll('td');
+const recolherStatatusCartas = document.querySelector('.recolherStatusCartas')
+const exibirCarta = document.querySelector('.exibirCarta')
+const imagem = document.querySelector('img')
+const textoCarta = document.querySelector('.textoCarta') 
+const textoLocomocao = document.querySelector('.locomocao') 
+let divSelecionada = null;
+let movimentacoes = [];
+let estadoBotao = false
+
 
 // Funções de interface
 
@@ -37,22 +49,26 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
 
-  carta.addEventListener("click", () => {
+  const locomocao = Cartas[numeroAleatorio].Locomocao;
+  const movimentacao = { div: carta, movimentacao: locomocao };
+  movimentacoes.push(movimentacao);
+
+  carta.addEventListener('click', () => {
+    divSelecionada = carta;
+    console.log('Div selecionada:', carta);
+    textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
     exibirCarta.appendChild(imagem, textoCarta)
     imagem.src = carta.props.img
     imagem.style.display = 'block'
-    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`  
-
+    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}` 
   });
 
   celula.appendChild(carta);
 
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
-
   // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
-
   console.log(Object.keys(Cartas));
 
   // Adicionar as propriedades da carta ao objeto carta
@@ -71,6 +87,7 @@ function criarCarta(celula, numeroAleatorio) {
 
   return carta;
 }
+
 
 function gerarCartasNaTela() {
   const celulasParaGerar = Array.from(celulas).slice(10, 20);
@@ -94,7 +111,8 @@ function gerarCartasNaTela() {
 
 function adicionarMovimentacao(carta) {
   const locomocao = carta.props.Locomocao;
-  movimentacoes.push({ div: carta, movimentacao: locomocao });
+  const movimentacao = { div: carta, movimentacao: locomocao };
+  movimentacoes.push(movimentacao);
   carta.addEventListener('click', () => {
     divSelecionada = carta;
     console.log('Div selecionada:', carta);
@@ -128,10 +146,11 @@ function moverCarta(celula) {
     }
 
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
-      const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
-      if (movimentacao > 0) {
+      const movimentacao = movimentacoes.find((m) => m.div === divSelecionada);
+      if (movimentacao.movimentacao > 0) {
         celula.appendChild(divSelecionada);
-        movimentacoes.find((m) => m.div === divSelecionada).movimentacao--;
+        movimentacao.movimentacao--;
+        textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
       }
     } else {
       console.log('Movimento não permitido');
@@ -139,16 +158,7 @@ function moverCarta(celula) {
   }
 }
 
-// Variáveis globais
-const gerarCartas = document.querySelector('.gerarCartas');
-const celulas = document.querySelectorAll('td');
-const recolherStatatusCartas = document.querySelector('.recolherStatusCartas')
-const exibirCarta = document.querySelector('.exibirCarta')
-const imagem = document.querySelector('img')
-const textoCarta = document.querySelector('.textoCarta')  
-let divSelecionada = null;
-let movimentacoes = [];
-let estadoBotao = false
+
 
 // Eventos
 gerarCartas.addEventListener('click', () => {

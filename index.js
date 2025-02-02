@@ -39,8 +39,6 @@ function interfaceMoverCarta(celula) {
 
 // Funções principais
 
-
-
 function criarCarta(celula, numeroAleatorio) {
   const carta = document.createElement('div');
   carta.classList.add('cartas');
@@ -88,7 +86,6 @@ function criarCarta(celula, numeroAleatorio) {
 
   return carta;
 }
-
 
 function gerarCartasNaTela() {
   const celulasParaGerar = Array.from(celulas).slice(10, 20);
@@ -159,10 +156,7 @@ function moverCarta(celula) {
   }
 }
 
-
-
 // Eventos
-
 
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {

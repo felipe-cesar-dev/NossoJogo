@@ -119,6 +119,7 @@ aside {
     display: none;
     border-radius: 10px;
     border: 2px solid white;
+    margin-top: 5px;
 }
 
 .imagem:hover{

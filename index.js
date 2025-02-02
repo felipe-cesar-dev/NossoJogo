@@ -38,6 +38,7 @@ function gerarNumeroAleatorio() {
 }
 
 function criarCarta(celula, numeroAleatorio) {
+  
   const carta = document.createElement('div');
   carta.classList.add('cartas');
   carta.style.width = '39px';
@@ -45,30 +46,36 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
-
   const status = document.querySelector('aside')
   const textoCarta = document.createElement('div');
+  const imagem = document.querySelector('img')
   textoCarta.style.position = 'absolute';
   textoCarta.style.top = '0px';
   textoCarta.style.left = '0px';
   textoCarta.style.fontSize = '12px';
   textoCarta.style.color = 'white';
   status.appendChild(textoCarta);
+  
 
   carta.addEventListener("mouseover", () => {
     carta.style.transition = "0.5s"
     carta.style.transform = "scale(1.5)";
     textoCarta.style.width = '39px'
     textoCarta.style.height = '39px'
-    textoCarta.textContent = `Imagem: ${carta.props.img} Nome: ${carta.props.Nome} Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
+    textoCarta.style.marginTop = '100px'
+    textoCarta.textContent = `Nome: ${carta.props.Nome} Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
     textoCarta.style.color = 'white'
     textoCarta.style.fontSize = '18px'
+    imagem.src = carta.props.img
+    imagem.style.width = '100px'
+    imagem.style.height = '100px'
   });
 
   carta.addEventListener("mouseout", () => {
     carta.style.transform = "scale(1)";
     carta.style.boxShadow = "none";
     textoCarta.textContent = '';
+    imagem.removeAttribute('src')
   });
 
   celula.appendChild(carta);

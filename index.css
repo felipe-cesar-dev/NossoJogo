@@ -15,10 +15,11 @@ header{
     justify-content: center;
     background-color: rgb(41, 41, 41);
     height: 60px;
+    border-bottom: 2px solid white;
 }
 
 nav{
-    margin-top: 60px;
+    margin-top: 62px;
     height: 50px;
     width: 100%;
     top: 0;
@@ -28,6 +29,7 @@ nav{
     align-items: center;
     justify-content: center;
     background-color: black;
+    border-bottom: 2px solid rgb(87, 87, 87);
 }
 
 aside {
@@ -37,15 +39,14 @@ aside {
     height: 100%;
     width: 105px; /* ajuste a largura conforme necessário */
     background-color: #000000; /* ajuste a cor de fundo conforme necessário */
+    border-right: 2px solid rgb(87, 87, 87);
   }
 
 
 .recolherStatusCartas{
-    padding-right: 4px;
-    padding: 0px;
-    padding-bottom: 1px;
-    margin-left: 95%;
     position: absolute;
+    width: 100%;
+    transition: 0.5s;
 }
 
 .recolherStatusCartas:hover,.girarBotao:hover, #reset-button:hover, .gerarCartas:hover{
@@ -65,13 +66,8 @@ aside {
     border: 1px solid white;
 }
 
-#reset-button{
-    margin-left: 5px;
-}
-
 
 .exibirCarta {
-    display: block;
     background-color: rgb(37, 37, 37);
     height: 190px;
     width: 100px;
@@ -81,7 +77,10 @@ aside {
     padding: 5px;
     padding-left: 10px;
     border: 1px solid white;
-}
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+  }
+
 
 .textoCarta{
     color: white;
@@ -103,9 +102,10 @@ aside {
 }
 
 table {
-border-collapse: collapse;
-margin-top: 110px;
-margin-bottom: 100px;
+    border-collapse: collapse;
+    margin-top: 110px;
+    margin-bottom: 100px;
+    border: 3px solid rgb(7, 7, 7);
 }
 
 th, td {

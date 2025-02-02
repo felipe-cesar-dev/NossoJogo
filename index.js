@@ -161,17 +161,19 @@ gerarCartas.addEventListener('click', () => {
 
 recolherStatatusCartas.addEventListener('click', () => {
   if (!estadoBotao) {
-    exibirCarta.style.display = 'none'
-    recolherStatatusCartas.style.marginLeft = '2%'
-    recolherStatatusCartas.innerHTML = '>>'
-    estadoBotao = true
+    exibirCarta.style.opacity = 0;
+    setTimeout(() => {
+      exibirCarta.style.visibility = 'hidden';
+    }, 500);
+    recolherStatatusCartas.innerHTML = 'Mostrar Status';
+    estadoBotao = true;
   } else {
-    exibirCarta.style.display = 'block'
-    recolherStatatusCartas.style.marginLeft = '' // resetar o margin-left
-    recolherStatatusCartas.innerHTML = '<<' // resetar o texto do botão
-    estadoBotao = false
+    exibirCarta.style.visibility = 'visible';
+    exibirCarta.style.opacity = 1;
+    recolherStatatusCartas.innerHTML = 'Ocultar Status';
+    estadoBotao = false;
   }
-})
+});
 
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {

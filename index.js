@@ -133,6 +133,12 @@ function moverCarta(celula) {
       return;
     }
 
+    // Verifica se a célula destino já contém uma carta
+    if (celula.children.length > 0) {
+      console.log('Célula destino já contém uma carta');
+      return;
+    }
+
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
       const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
       if (movimentacao > 0) {

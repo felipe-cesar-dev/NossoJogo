@@ -1,5 +1,4 @@
 import Cartas from "./assets/deckCartasDict.js";
-import girarMapa from "./utils/girarMapa.js";
 
 
 // Funções de interface
@@ -46,45 +45,20 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
 
-  const status = document.querySelector('aside');
-  const textoCarta = document.createElement('div');
-  const imagem = document.createElement('img'); // criar uma nova imagem para cada carta
-  
-
-  imagem.style.marginTop = '150px'
-  imagem.style.display = 'none'; // inicialmente oculto
-  imagem.style.width = '100px';
-  imagem.style.height = '100px';
-
-  textoCarta.style.fontSize = '20px';
-  textoCarta.style.color = 'white';
-  textoCarta.style.display = 'none'; // inicialmente oculto
-
-
-  
-  status.appendChild(textoCarta);
-  status.appendChild(imagem);
-
-  let cartaExibida = false;
+  const imagem = document.querySelector('img')
+  const textoCarta = document.querySelector('.textoCarta')  
 
   carta.addEventListener("click", () => {
-    if (!cartaExibida) {
-      textoCarta.style.display = 'block';
-      imagem.style.display = 'block';
-      imagem.src = carta.props.img;
-      textoCarta.textContent = `Nome: ${carta.props.Nome}\n\n\n Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
-      cartaExibida = true;
-    } else {
-      textoCarta.style.display = 'none';
-      imagem.style.display = 'none';
-      cartaExibida = false;
-    }
+    exibirCarta.appendChild(imagem, textoCarta)
+    imagem.src = carta.props.img
+    imagem.style.display = 'block'
+    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`  
+
   });
 
   document.addEventListener("click", function(event) {
     if (event.target !== carta && event.target !== textoCarta && event.target !== imagem) {
-      textoCarta.style.display = 'none';
-      imagem.style.display = 'none';
+
       cartaExibida = false;
     }
   });
@@ -174,13 +148,30 @@ function moverCarta(celula) {
 // Variáveis globais
 const gerarCartas = document.querySelector('.gerarCartas');
 const celulas = document.querySelectorAll('td');
+const recolherStatatusCartas = document.querySelector('.recolherStatusCartas')
+const exibirCarta = document.querySelector('.exibirCarta')
 let divSelecionada = null;
 let movimentacoes = [];
+let estadoBotao = false
 
 // Eventos
 gerarCartas.addEventListener('click', () => {
   interfaceGerarCartasNaTela();
 });
+
+recolherStatatusCartas.addEventListener('click', () => {
+  if (!estadoBotao) {
+    exibirCarta.style.display = 'none'
+    recolherStatatusCartas.style.marginLeft = '2%'
+    recolherStatatusCartas.innerHTML = '>>'
+    estadoBotao = true
+  } else {
+    exibirCarta.style.display = 'block'
+    recolherStatatusCartas.style.marginLeft = '' // resetar o margin-left
+    recolherStatatusCartas.innerHTML = '<<' // resetar o texto do botão
+    estadoBotao = false
+  }
+})
 
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {
@@ -195,4 +186,3 @@ document.getElementById('reset-button').addEventListener('click', () => {
 
 
 interfaceGerarCartasNaTela();
-girarMapa();

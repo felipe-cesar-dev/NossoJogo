@@ -30,6 +30,15 @@ nav{
     background-color: black;
 }
 
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100px; /* ajuste a largura conforme necessário */
+    background-color: #000000; /* ajuste a cor de fundo conforme necessário */
+  }
+
 table {
 border-collapse: collapse;
 margin-top: 100px;

@@ -45,24 +45,42 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
+
+  const status = document.querySelector('aside')
+  const textoCarta = document.createElement('div');
+  textoCarta.style.position = 'absolute';
+  textoCarta.style.top = '0px';
+  textoCarta.style.left = '0px';
+  textoCarta.style.fontSize = '12px';
+  textoCarta.style.color = 'white';
+  status.appendChild(textoCarta);
+
   carta.addEventListener("mouseover", () => {
     carta.style.transition = "0.5s"
     carta.style.transform = "scale(1.5)";
-    carta.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+    textoCarta.style.width = '39px'
+    textoCarta.style.height = '39px'
+    textoCarta.textContent = `Imagem: ${carta.props.img} Nome: ${carta.props.Nome} Ataque: ${carta.props.Ataque} Vida:${carta.props.Vida}`;
+    textoCarta.style.color = 'white'
+    textoCarta.style.fontSize = '18px'
   });
+
   carta.addEventListener("mouseout", () => {
     carta.style.transform = "scale(1)";
     carta.style.boxShadow = "none";
+    textoCarta.textContent = '';
   });
+
   celula.appendChild(carta);
-  
+
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
-  
+
   // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
+
   console.log(Object.keys(Cartas));
-  
+
   // Adicionar as propriedades da carta ao objeto carta
   carta.props = {
     Nome: cartaProps.Nome,
@@ -74,8 +92,9 @@ function criarCarta(celula, numeroAleatorio) {
     voar: cartaProps.voar,
     andar: cartaProps.andar,
     nadar: cartaProps.nadar,
+    img: cartaProps.img
   };
-  
+
   return carta;
 }
 

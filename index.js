@@ -9,10 +9,12 @@ const exibirCarta = document.querySelector('.exibirCarta')
 const imagem = document.querySelector('img')
 const textoCarta = document.querySelector('.textoCarta') 
 const textoLocomocao = document.querySelector('.locomocao') 
+const botaoReset = document.getElementById('reset-button')
+const turnos = document.querySelector('.turnos')
 let divSelecionada = null;
 let movimentacoes = [];
 let estadoBotao = false
-
+let soma = 0
 
 // Funções de interface
 
@@ -187,9 +189,11 @@ celulas.forEach((celula) => {
   });
 });
 
-document.getElementById('reset-button').addEventListener('click', () => {
+botaoReset.addEventListener('click', () => {
   movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
   console.log('Movimentações resetadas');
+  soma += 0.5;
+  turnos.innerHTML = `Turno ${soma}`;
 });
 
 

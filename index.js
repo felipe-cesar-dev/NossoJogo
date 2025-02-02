@@ -1,19 +1,18 @@
 import Cartas from "./assets/deckCartasDict.js";
+import initBotaoIrAoFim from "./utils/botaoFimComeco.js";
+import initRecolherStatusCartas from "./utils/botaoOcultarMostrarStatus.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 
 // Variáveis globais
-const gerarCartas = document.querySelector('.gerarCartas');
 const celulas = document.querySelectorAll('td');
-const recolherStatatusCartas = document.querySelector('.recolherStatusCartas')
 const exibirCarta = document.querySelector('.exibirCarta')
 const imagem = document.querySelector('img')
 const textoCarta = document.querySelector('.textoCarta') 
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
-const turnos = document.querySelector('.turnos')
+const turnos = document.querySelector('.turnos')  
 let divSelecionada = null;
 let movimentacoes = [];
-let estadoBotao = false
 let soma = 0
 
 // Funções de interface
@@ -163,25 +162,7 @@ function moverCarta(celula) {
 
 
 // Eventos
-gerarCartas.addEventListener('click', () => {
-  interfaceGerarCartasNaTela();
-});
 
-recolherStatatusCartas.addEventListener('click', () => {
-  if (!estadoBotao) {
-    exibirCarta.style.opacity = 0;
-    setTimeout(() => {
-      exibirCarta.style.visibility = 'hidden';
-    }, 500);
-    recolherStatatusCartas.innerHTML = 'Mostrar Status';
-    estadoBotao = true;
-  } else {
-    exibirCarta.style.visibility = 'visible';
-    exibirCarta.style.opacity = 1;
-    recolherStatatusCartas.innerHTML = 'Ocultar Status';
-    estadoBotao = false;
-  }
-});
 
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {
@@ -190,11 +171,18 @@ celulas.forEach((celula) => {
 });
 
 botaoReset.addEventListener('click', () => {
-  movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
-  console.log('Movimentações resetadas');
-  soma += 0.5;
-  turnos.innerHTML = `Turno ${soma}`;
+  const celulasPrimeiraLinha = Array.from(celulas).slice(10, 20);
+  if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
+    movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
+    console.log('Movimentações resetadas');
+    soma += 0.5;
+    turnos.innerHTML = `Turno ${soma}`;
+    interfaceGerarCartasNaTela();
+  } else {
+    alert('Ainda há cartas na primeira linha!');
+  }
 });
 
-
+initRecolherStatusCartas()
+initBotaoIrAoFim()
 interfaceGerarCartasNaTela();

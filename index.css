@@ -16,6 +16,7 @@ header{
     background-color: rgb(41, 41, 41);
     height: 60px;
     border-bottom: 2px solid white;
+    gap: 10px;
 }
 
 .turnos{
@@ -65,23 +66,26 @@ aside {
     padding: 5px;
 }
 
-.recolherStatusCartas:hover,.girarBotao:hover, #reset-button:hover, .gerarCartas:hover{
+.recolherStatusCartas:hover,.girarBotao:hover, #reset-button:hover, .gerarCartas:hover, #ir-ao-fim:hover{
     background-color: #b60a0a;
 }
 
-.recolherStatusCartas,.girarBotao, #reset-button, .gerarCartas{
+.recolherStatusCartas,.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim{
     background-color: #640505;
     color: white;
     cursor: pointer;
     transition: 0.5s;
 }
 
-.girarBotao, #reset-button, .gerarCartas{
+.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim{
     padding: 10px;
     border-radius: 10px;
     border: 1px solid white;
 }
 
+#ir-ao-fim{
+    width: 135px;
+}
 
 .exibirCarta {
     background-color: rgb(37, 37, 37);
@@ -126,6 +130,7 @@ table {
     border-collapse: collapse;
     margin-top: 110px;
     margin-bottom: 100px;
+    margin-left: 100px;
     border: 3px solid rgb(7, 7, 7);
 }
 

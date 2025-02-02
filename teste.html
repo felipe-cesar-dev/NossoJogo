@@ -1,94 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Exemplo de página com botão para ir ao fim</title>
   <style>
-    .quadrado {
-      width: 50px;
-      height: 50px;
-      border: 1px solid black;
-      display: inline-block;
-      position: relative;
-    }
-    .retangulo {
-      width: 50px;
-      height: 50px;
-      border: 1px solid black;
-      display: inline-block;
-      position: relative;
-    }
-    .personagem {
-      width: 40px;
-      height: 40px;
-      background-color: blue;
-      position: absolute;
-      top: 5px;
-      left: 5px;
+    .container {
+      width: 800px;
+      height: 2000px;
+      background-color: #f0f0f0;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="quadrado"><div class="personagem" id="personagem"></div></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-    <div class="quadrado"></div>
-  </div>
-  <div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
-    <div class="retangulo"></div>
+  <div class="container">
+    <!-- Conteúdo da página -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    <!-- ... -->
+    <button id="ir-ao-fim">Ir ao fim do mapa</button>
   </div>
 
   <script>
-    const personagem = document.getElementById('personagem');
-    const quadrados = document.querySelectorAll('.quadrado');
-    const retangulos = document.querySelectorAll('.retangulo');
-    let selecionado = false;
-    let indiceAtualX = 0;
-    let indiceAtualY = 0;
+    const botaoIrAoFim = document.getElementById('ir-ao-fim');
+    const container = document.querySelector('.container');
 
-    personagem.addEventListener('click', () => {
-      selecionado = true;
-    });
-
-    quadrados.forEach((quadrado, indice) => {
-      quadrado.addEventListener('click', () => {
-        if (selecionado) {
-          if (indice === indiceAtualX + 1 || indice === indiceAtualX - 1) {
-            quadrado.appendChild(personagem);
-            indiceAtualX = indice;
-            selecionado = false;
-          }
-        }
-      });
-    });
-
-    retangulos.forEach((retangulo, indice) => {
-      retangulo.addEventListener('click', () => {
-        if (selecionado) {
-          if (indice === indiceAtualY + 1 || indice === indiceAtualY - 1) {
-            retangulo.appendChild(personagem);
-            indiceAtualY = indice;
-            selecionado = false;
-          }
-        }
-      });
+    botaoIrAoFim.addEventListener('click', () => {
+      container.scrollTop = container.scrollHeight;
+      window.scrollTo(0, document.body.scrollHeight);
     });
   </script>
 </body>

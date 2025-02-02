@@ -1,4 +1,5 @@
 import Cartas from "./assets/deckCartasDict.js";
+import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 
 
 // Funções de interface
@@ -25,16 +26,7 @@ function interfaceMoverCarta(celula) {
 
 // Funções principais
 
-let numerosRepetidos = [];
 
-function gerarNumeroAleatorio() {
-  let numeroAleatorio;
-  do {
-    numeroAleatorio = Math.floor(Math.random() * 27) + 1;
-  } while (numerosRepetidos.includes(numeroAleatorio));
-  numerosRepetidos.push(numeroAleatorio);
-  return numeroAleatorio;
-}
 
 function criarCarta(celula, numeroAleatorio) {
   const carta = document.createElement('div');

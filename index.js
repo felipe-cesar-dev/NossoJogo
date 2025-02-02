@@ -45,22 +45,12 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
 
-  const imagem = document.querySelector('img')
-  const textoCarta = document.querySelector('.textoCarta')  
-
   carta.addEventListener("click", () => {
     exibirCarta.appendChild(imagem, textoCarta)
     imagem.src = carta.props.img
     imagem.style.display = 'block'
     textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`  
 
-  });
-
-  document.addEventListener("click", function(event) {
-    if (event.target !== carta && event.target !== textoCarta && event.target !== imagem) {
-
-      cartaExibida = false;
-    }
   });
 
   celula.appendChild(carta);
@@ -139,6 +129,12 @@ function moverCarta(celula) {
       return;
     }
 
+    // Verifica se a célula destino tem a classe "muro"
+    if (celula.classList.contains('muro')) {
+      console.log('Não é permitido mover para uma célula com a classe "muro"');
+      return;
+    }
+
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
       const movimentacao = movimentacoes.find((m) => m.div === divSelecionada).movimentacao;
       if (movimentacao > 0) {
@@ -156,6 +152,8 @@ const gerarCartas = document.querySelector('.gerarCartas');
 const celulas = document.querySelectorAll('td');
 const recolherStatatusCartas = document.querySelector('.recolherStatusCartas')
 const exibirCarta = document.querySelector('.exibirCarta')
+const imagem = document.querySelector('img')
+const textoCarta = document.querySelector('.textoCarta')  
 let divSelecionada = null;
 let movimentacoes = [];
 let estadoBotao = false

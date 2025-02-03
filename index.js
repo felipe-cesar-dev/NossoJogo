@@ -15,12 +15,6 @@ let divSelecionada = null;
 let movimentacoes = [];
 let soma = 0
 
-
-function interfaceAdicionarMovimentacao(carta) {
-  adicionarMovimentacao(carta);
-}
-
-
 // Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
@@ -91,7 +85,7 @@ function gerarCartasNaTela() {
       const numeroAleatorio = gerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
       const carta = criarCarta(celula, numeroAleatorio);
-      interfaceAdicionarMovimentacao(carta, numeroAleatorio);
+      adicionarMovimentacao(carta, numeroAleatorio);
     }
     if (cartasDisponiveis < 10) {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);

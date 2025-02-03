@@ -7,10 +7,9 @@ import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 const celulas = document.querySelectorAll('td');
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
-
 let divSelecionada = null;
 let movimentacoes = [];
-let soma = 0
+
 
 // Funções principais
 
@@ -153,6 +152,7 @@ celulas.forEach((celula) => {
 });
 
 botaoReset.addEventListener('click', () => {
+  let soma = 0
   const turnos = document.querySelector('.turnos')  
   const celulasPrimeiraLinha = Array.from(celulas).slice(10, 20);
   if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {

@@ -14,6 +14,7 @@ let divSelecionada = null;
 let movimentacoes = [];
 let soma = 0
 
+
 // Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
@@ -56,6 +57,10 @@ function criarCarta(celula, numeroAleatorio) {
   return carta;
 }
 
+function iCriarCarta(carta, numeroAleatorio){
+  return criarCarta(carta,numeroAleatorio)
+}
+
 function gerarCartasNaTela() {
   const celulasParaGerar = arrayFromCelulas(celulas);
   if (celulasParaGerar.every((celula) => celula.children.length === 0)) {
@@ -65,7 +70,7 @@ function gerarCartasNaTela() {
       const celula = celulasParaGerar[i];
       const numeroAleatorio = gerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
-      const carta = criarCarta(celula, numeroAleatorio);
+      const carta = iCriarCarta(celula, numeroAleatorio);
       adicionarMovimentacao(carta, numeroAleatorio);
     }
     if (cartasDisponiveis < 6) {

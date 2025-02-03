@@ -4,6 +4,7 @@ import initRecolherStatusCartas from "./utils/botaoOcultarMostrarStatus.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 import arrayFromCelulas from "./utils/arrayFromCelulas.js";
 import criarPropsCarta from "./utils/criarPropsDeCartas.js";
+import estilizarCartas from "./utils/estilizarCarta.js";
 
 // Variáveis globais
 const celulas = document.querySelectorAll('td');
@@ -14,6 +15,7 @@ let movimentacoes = [];
 let soma = 0
 // Funções principais
 
+
 function criarCarta(celula, numeroAleatorio) {
   const textoCarta = document.querySelector('.textoCarta') 
   const exibirCarta = document.querySelector('.exibirCarta')
@@ -22,11 +24,8 @@ function criarCarta(celula, numeroAleatorio) {
   const locomocao = Cartas[numeroAleatorio].Locomocao;
   const movimentacao = { div: carta, movimentacao: locomocao };
   carta.classList.add('cartas');
-  carta.style.width = '40px';
-  carta.style.height = '40px';
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
-  carta.style.backgroundSize = 'cover';
-  carta.style.backgroundRepeat = 'no-repeat';
+  estilizarCartas(carta)
   movimentacoes.push(movimentacao);
   carta.addEventListener('click', () => {
     if (divSelecionada && divSelecionada !== carta) {

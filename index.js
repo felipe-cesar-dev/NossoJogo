@@ -1,8 +1,9 @@
 import Cartas from "./assets/deckCartasDict.js";
-import arrayFromCelulas from "./utils/arrayFromCelulas.js";
 import initBotaoIrAoFim from "./utils/botaoFimComeco.js";
 import initRecolherStatusCartas from "./utils/botaoOcultarMostrarStatus.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
+import arrayFromCelulas from "./utils/arrayFromCelulas.js";
+import criarPropsCarta from "./utils/criarPropsDeCartas.js";
 
 // Variáveis globais
 const celulas = document.querySelectorAll('td');
@@ -48,25 +49,14 @@ function criarCarta(celula, numeroAleatorio) {
   celula.appendChild(carta);
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
+  carta.props = criarPropsCarta(cartaProps);
   // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
   console.log(Object.keys(Cartas));
   // Adicionar as propriedades da carta ao objeto carta
-  carta.props = {
-    Nome: cartaProps.Nome,
-    Ataque: parseInt(cartaProps.Ataque),
-    Vida: parseInt(cartaProps.Vida),
-    Locomocao: parseInt(cartaProps.Locomocao),
-    Perfuracao: cartaProps.Perfuracao,
-    Magia: cartaProps.Magia,
-    voar: cartaProps.voar,
-    andar: cartaProps.andar,
-    nadar: cartaProps.nadar,
-    img: cartaProps.img
-  };
-
   return carta;
 }
+
 
 function gerarCartasNaTela() {
   const celulasParaGerar = arrayFromCelulas(celulas);
@@ -142,18 +132,18 @@ celulas.forEach((celula) => {
 });
 
 botaoReset.addEventListener('click', () => {
-  let soma = 0
-  const turnos = document.querySelector('.turnos')  
-  const celulasPrimeiraLinha = arrayFromCelulas(celulas)
-  if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
+let soma = 0
+const turnos = document.querySelector('.turnos')  
+const celulasPrimeiraLinha = arrayFromCelulas(celulas)
+if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
     movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
     console.log('Movimentações resetadas');
     soma += 0.5;
     turnos.innerHTML = `Turno ${soma}`;
     gerarCartasNaTela();
-  } else {
+} else {
     alert('Ainda há cartas na primeira linha!');
-  }
+}
 });
 
 

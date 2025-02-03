@@ -10,7 +10,6 @@ const botaoReset = document.getElementById('reset-button')
 let divSelecionada = null;
 let movimentacoes = [];
 
-
 // Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
@@ -18,15 +17,14 @@ function criarCarta(celula, numeroAleatorio) {
   const exibirCarta = document.querySelector('.exibirCarta')
   const imagem = document.querySelector('img')
   const carta = document.createElement('div');
+  const locomocao = Cartas[numeroAleatorio].Locomocao;
+  const movimentacao = { div: carta, movimentacao: locomocao };
   carta.classList.add('cartas');
   carta.style.width = '40px';
   carta.style.height = '40px';
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
-
-  const locomocao = Cartas[numeroAleatorio].Locomocao;
-  const movimentacao = { div: carta, movimentacao: locomocao };
   movimentacoes.push(movimentacao);
 
   carta.addEventListener('click', () => {
@@ -165,7 +163,6 @@ botaoReset.addEventListener('click', () => {
     alert('Ainda há cartas na primeira linha!');
   }
 });
-
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()

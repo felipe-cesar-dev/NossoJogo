@@ -5,15 +5,15 @@ import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 import arrayFromCelulas from "./utils/arrayFromCelulas.js";
 import criarPropsCarta from "./utils/criarPropsDeCartas.js";
 import estilizarCartas from "./utils/estilizarCarta.js";
+import Movimentacoes from "./classes/Movimentacoes.js";
 
 // Variáveis globais
 const celulas = document.querySelectorAll('td');
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
 let divSelecionada = null;
-let movimentacoes = [];
 let soma = 0
-
+const movimentacoes = new Movimentacoes;
 
 // Funções principais
 
@@ -27,7 +27,7 @@ function criarCarta(celula, numeroAleatorio) {
   carta.classList.add('cartas');
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   estilizarCartas(carta)
-  movimentacoes.push(movimentacao);
+  movimentacoes.adicionarMovimentacao(movimentacao);
   carta.addEventListener('click', () => {
     if (divSelecionada && divSelecionada !== carta) {
       divSelecionada.style.opacity = '1';
@@ -81,10 +81,14 @@ function gerarCartasNaTela() {
   }
 }
 
+export default function iGerarCartasNaTela(){
+  return gerarCartasNaTela()
+}
+
 function adicionarMovimentacao(carta) {
   const locomocao = carta.props.Locomocao;
   const movimentacao = { div: carta, movimentacao: locomocao };
-  movimentacoes.push(movimentacao);
+  movimentacoes.adicionarMovimentacao(movimentacao);
   carta.addEventListener('click', () => {
     divSelecionada = carta;
     console.log('Div selecionada:', carta);
@@ -114,7 +118,7 @@ function moverCarta(celula) {
       return;
     }
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
-      const movimentacao = movimentacoes.find((m) => m.div === divSelecionada);
+      const movimentacao = movimentacoes.encontrarMovimentacao((m) => m.div === divSelecionada);
       if (movimentacao.movimentacao > 0) {
         celula.appendChild(divSelecionada);
         movimentacao.movimentacao--;
@@ -134,20 +138,22 @@ celulas.forEach((celula) => {
   });
 });
 
-botaoReset.addEventListener('click', () => {
-const turnos = document.querySelector('.turnos')  
-const celulasPrimeiraLinha = arrayFromCelulas(celulas)
-if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
-    movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
+function handleResetButtonClick() {
+  const turnos = document.querySelector('.turnos')
+  const celulasPrimeiraLinha = arrayFromCelulas(celulas)
+  if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
+    movimentacoes.realizarAcaoEmTodasMovimentacoes((m) => m.movimentacao = m.div.props.Locomocao);
     console.log('Movimentações resetadas');
     soma += 0.5;
     turnos.innerHTML = `Turno ${soma}`;
-    gerarCartasNaTela();
-} else {
+    iGerarCartasNaTela();
+  } else {
     alert('Ainda há cartas na primeira linha!');
+  }
 }
-});
+
+botaoReset.addEventListener('click', handleResetButtonClick);
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()
-gerarCartasNaTela();
+iGerarCartasNaTela();

@@ -26,7 +26,6 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundSize = 'cover';
   carta.style.backgroundRepeat = 'no-repeat';
   movimentacoes.push(movimentacao);
-
   carta.addEventListener('click', () => {
     if (divSelecionada && divSelecionada !== carta) {
       divSelecionada.style.opacity = '1';
@@ -40,21 +39,17 @@ function criarCarta(celula, numeroAleatorio) {
     imagem.style.display = 'block'
     textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`
   });
-
   document.addEventListener('click', (event) => {
     if (divSelecionada && !divSelecionada.contains(event.target)) {
       divSelecionada.style.opacity = '1';
     }
   });
-
   celula.appendChild(carta);
-
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
   // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
   console.log(Object.keys(Cartas));
-
   // Adicionar as propriedades da carta ao objeto carta
   carta.props = {
     Nome: cartaProps.Nome,
@@ -68,7 +63,6 @@ function criarCarta(celula, numeroAleatorio) {
     nadar: cartaProps.nadar,
     img: cartaProps.img
   };
-
   return carta;
 }
 
@@ -109,25 +103,21 @@ function moverCarta(celula) {
     const cellIndex = celulaAtual.cellIndex;
     const newRow = celula.parentNode.rowIndex;
     const newCell = celula.cellIndex;
-
     // Verifica se a carta está tentando voltar para a linha 0
     if (newRow === 0 && rowIndex > 0) {
       console.log('Não é permitido voltar para a linha 0');
       return;
     }
-
     // Verifica se a célula destino já contém uma carta
     if (celula.children.length > 0) {
       console.log('Célula destino já contém uma carta');
       return;
     }
-
     // Verifica se a célula destino tem a classe "muro"
     if (celula.classList.contains('muro')) {
       console.log('Não é permitido mover para uma célula com a classe "muro"');
       return;
     }
-
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
       const movimentacao = movimentacoes.find((m) => m.div === divSelecionada);
       if (movimentacao.movimentacao > 0) {

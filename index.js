@@ -68,7 +68,7 @@ function criarCarta(celula, numeroAleatorio) {
 }
 
 function gerarCartasNaTela() {
-  const celulasParaGerar = Array.from(celulas).slice(10, 20);
+  const celulasParaGerar = arrayFromCelulas();
   if (celulasParaGerar.every((celula) => celula.children.length === 0)) {
     const cartasDisponiveis = Object.keys(Cartas).length;
     const cartasParaGerar = Math.min(cartasDisponiveis, 5);
@@ -143,7 +143,7 @@ celulas.forEach((celula) => {
 botaoReset.addEventListener('click', () => {
   let soma = 0
   const turnos = document.querySelector('.turnos')  
-  const celulasPrimeiraLinha = Array.from(celulas).slice(10, 20);
+  const celulasPrimeiraLinha = arrayFromCelulas()
   if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
     movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
     console.log('Movimentações resetadas');
@@ -154,6 +154,10 @@ botaoReset.addEventListener('click', () => {
     alert('Ainda há cartas na primeira linha!');
   }
 });
+
+function arrayFromCelulas(){
+    return Array.from(celulas).slice(10, 20)
+}
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()

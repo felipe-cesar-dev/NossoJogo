@@ -1,4 +1,5 @@
 import Cartas from "./assets/deckCartasDict.js";
+import arrayFromCelulas from "./utils/arrayFromCelulas.js";
 import initBotaoIrAoFim from "./utils/botaoFimComeco.js";
 import initRecolherStatusCartas from "./utils/botaoOcultarMostrarStatus.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
@@ -68,7 +69,7 @@ function criarCarta(celula, numeroAleatorio) {
 }
 
 function gerarCartasNaTela() {
-  const celulasParaGerar = arrayFromCelulas();
+  const celulasParaGerar = arrayFromCelulas(celulas);
   if (celulasParaGerar.every((celula) => celula.children.length === 0)) {
     const cartasDisponiveis = Object.keys(Cartas).length;
     const cartasParaGerar = Math.min(cartasDisponiveis, 5);
@@ -143,7 +144,7 @@ celulas.forEach((celula) => {
 botaoReset.addEventListener('click', () => {
   let soma = 0
   const turnos = document.querySelector('.turnos')  
-  const celulasPrimeiraLinha = arrayFromCelulas()
+  const celulasPrimeiraLinha = arrayFromCelulas(celulas)
   if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
     movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);
     console.log('Movimentações resetadas');
@@ -155,9 +156,7 @@ botaoReset.addEventListener('click', () => {
   }
 });
 
-function arrayFromCelulas(){
-    return Array.from(celulas).slice(10, 20)
-}
+
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()

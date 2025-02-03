@@ -149,8 +149,12 @@ transition: 0.4s;
 cursor: pointer;
 }
 
-.fundo, .fundo2{
-    background-color: blue;
+.fundo{
+    background-image: url('./images/deck.jpg');
+}
+
+.fundo2{
+    background-image: url('./images/deck.jpg');
 }
 
 .fundoBatalha{

@@ -181,11 +181,17 @@ botaoReset.addEventListener('click', () => {
     console.log('Movimentações resetadas');
     soma += 0.5;
     turnos.innerHTML = `Turno ${soma}`;
-    interfaceGerarCartasNaTela();
+    resetarTela();
   } else {
     alert('Ainda há cartas na primeira linha!');
   }
 });
+
+function resetarTela() {
+  // Aqui você pode adicionar o código necessário para resetar a tela
+  // Por exemplo, você pode chamar a função gerarCartasNaTela() aqui
+  gerarCartasNaTela();
+}
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()

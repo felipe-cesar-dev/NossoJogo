@@ -5,12 +5,9 @@ import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 
 // Variáveis globais
 const celulas = document.querySelectorAll('td');
-
-
-
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
-const turnos = document.querySelector('.turnos')  
+
 let divSelecionada = null;
 let movimentacoes = [];
 let soma = 0
@@ -156,6 +153,7 @@ celulas.forEach((celula) => {
 });
 
 botaoReset.addEventListener('click', () => {
+  const turnos = document.querySelector('.turnos')  
   const celulasPrimeiraLinha = Array.from(celulas).slice(10, 20);
   if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
     movimentacoes.forEach((m) => m.movimentacao = m.div.props.Locomocao);

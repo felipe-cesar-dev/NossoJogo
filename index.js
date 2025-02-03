@@ -33,9 +33,6 @@ function interfaceAdicionarMovimentacao(carta) {
   adicionarMovimentacao(carta);
 }
 
-function interfaceMoverCarta(celula) {
-  moverCarta(celula);
-}
 
 // Funções principais
 
@@ -170,7 +167,7 @@ function moverCarta(celula) {
 
 celulas.forEach((celula) => {
   celula.addEventListener('click', () => {
-    interfaceMoverCarta(celula);
+    moverCarta(celula);
   });
 });
 

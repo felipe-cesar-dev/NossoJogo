@@ -15,19 +15,6 @@ let divSelecionada = null;
 let movimentacoes = [];
 let soma = 0
 
-// Funções de interface
-
-function interfaceGerarNumeroAleatorio() {
-  return gerarNumeroAleatorio();
-}
-
-function interfaceCriarCarta(celula, numeroAleatorio) {
-  return criarCarta(celula, numeroAleatorio);
-}
-
-function interfaceGerarCartasNaTela() {
-  gerarCartasNaTela();
-}
 
 function interfaceAdicionarMovimentacao(carta) {
   adicionarMovimentacao(carta);
@@ -101,9 +88,9 @@ function gerarCartasNaTela() {
     const cartasParaGerar = Math.min(cartasDisponiveis, 10);
     for (let i = 0; i < cartasParaGerar; i++) {
       const celula = celulasParaGerar[i];
-      const numeroAleatorio = interfaceGerarNumeroAleatorio();
+      const numeroAleatorio = gerarNumeroAleatorio();
       console.log(`Número sorteado: ${numeroAleatorio}`);
-      const carta = interfaceCriarCarta(celula, numeroAleatorio);
+      const carta = criarCarta(celula, numeroAleatorio);
       interfaceAdicionarMovimentacao(carta, numeroAleatorio);
     }
     if (cartasDisponiveis < 10) {
@@ -192,4 +179,4 @@ function resetarTela() {
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()
-interfaceGerarCartasNaTela();
+gerarCartasNaTela();

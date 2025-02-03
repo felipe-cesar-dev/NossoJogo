@@ -11,13 +11,14 @@ import Movimentacoes from "./classes/Movimentacoes.js";
 const celulas = document.querySelectorAll('td');
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
-let divSelecionada = null;
+let divSelecionada = null; //desacoplada do criarCarta
 let soma = 0
 const movimentacoes = new Movimentacoes;
 
 // Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
+  let div = null
   const textoCarta = document.querySelector('.textoCarta') 
   const exibirCarta = document.querySelector('.exibirCarta')
   const imagem = document.querySelector('img')
@@ -29,12 +30,12 @@ function criarCarta(celula, numeroAleatorio) {
   estilizarCartas(carta)
   movimentacoes.adicionarMovimentacao(movimentacao);
   carta.addEventListener('click', () => {
-    if (divSelecionada && divSelecionada !== carta) {
-      divSelecionada.style.opacity = '1';
+    if (div && div !== carta) {
+      div.style.opacity = '1';
     }
-    divSelecionada = carta;
+    div = carta;
     console.log('Div selecionada:', carta);
-    divSelecionada.style.opacity = '0.5'
+    div.style.opacity = '0.5'
     textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`
     exibirCarta.appendChild(imagem, textoCarta)
     imagem.src = carta.props.img
@@ -42,8 +43,8 @@ function criarCarta(celula, numeroAleatorio) {
     textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`
   });
   document.addEventListener('click', (event) => {
-    if (divSelecionada && !divSelecionada.contains(event.target)) {
-      divSelecionada.style.opacity = '1';
+    if (div && !div.contains(event.target)) {
+      div.style.opacity = '1';
     }
   });
   celula.appendChild(carta);

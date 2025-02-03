@@ -53,13 +53,23 @@ function criarCarta(celula, numeroAleatorio) {
   movimentacoes.push(movimentacao);
 
   carta.addEventListener('click', () => {
+    if (divSelecionada && divSelecionada !== carta) {
+      divSelecionada.style.opacity = '1';
+    }
     divSelecionada = carta;
     console.log('Div selecionada:', carta);
-    textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
+    divSelecionada.style.opacity = '0.5'
+    textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`
     exibirCarta.appendChild(imagem, textoCarta)
     imagem.src = carta.props.img
     imagem.style.display = 'block'
-    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}` 
+    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`
+  });
+
+  document.addEventListener('click', (event) => {
+    if (divSelecionada && !divSelecionada.contains(event.target)) {
+      divSelecionada.style.opacity = '1';
+    }
   });
 
   celula.appendChild(carta);

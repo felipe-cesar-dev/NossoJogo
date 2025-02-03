@@ -63,6 +63,7 @@ function criarCarta(celula, numeroAleatorio) {
     nadar: cartaProps.nadar,
     img: cartaProps.img
   };
+
   return carta;
 }
 
@@ -70,7 +71,7 @@ function gerarCartasNaTela() {
   const celulasParaGerar = Array.from(celulas).slice(10, 20);
   if (celulasParaGerar.every((celula) => celula.children.length === 0)) {
     const cartasDisponiveis = Object.keys(Cartas).length;
-    const cartasParaGerar = Math.min(cartasDisponiveis, 10);
+    const cartasParaGerar = Math.min(cartasDisponiveis, 5);
     for (let i = 0; i < cartasParaGerar; i++) {
       const celula = celulasParaGerar[i];
       const numeroAleatorio = gerarNumeroAleatorio();
@@ -78,7 +79,7 @@ function gerarCartasNaTela() {
       const carta = criarCarta(celula, numeroAleatorio);
       adicionarMovimentacao(carta, numeroAleatorio);
     }
-    if (cartasDisponiveis < 10) {
+    if (cartasDisponiveis < 6) {
       console.log(`Não há mais cartas disponíveis. ${cartasDisponiveis} cartas foram geradas.`);
     }
   } else {

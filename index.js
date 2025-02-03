@@ -5,9 +5,9 @@ import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 
 // Variáveis globais
 const celulas = document.querySelectorAll('td');
-const exibirCarta = document.querySelector('.exibirCarta')
-const imagem = document.querySelector('img')
-const textoCarta = document.querySelector('.textoCarta') 
+
+
+
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
 const turnos = document.querySelector('.turnos')  
@@ -18,6 +18,9 @@ let soma = 0
 // Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
+  const textoCarta = document.querySelector('.textoCarta') 
+  const exibirCarta = document.querySelector('.exibirCarta')
+  const imagem = document.querySelector('img')
   const carta = document.createElement('div');
   carta.classList.add('cartas');
   carta.style.width = '40px';

@@ -13,8 +13,8 @@ const botaoReset = document.getElementById('reset-button')
 let divSelecionada = null;
 let movimentacoes = [];
 let soma = 0
-// Funções principais
 
+// Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
   const textoCarta = document.querySelector('.textoCarta') 
@@ -55,7 +55,6 @@ function criarCarta(celula, numeroAleatorio) {
   // Adicionar as propriedades da carta ao objeto carta
   return carta;
 }
-
 
 function gerarCartasNaTela() {
   const celulasParaGerar = arrayFromCelulas(celulas);
@@ -130,7 +129,6 @@ celulas.forEach((celula) => {
   });
 });
 
-
 botaoReset.addEventListener('click', () => {
 const turnos = document.querySelector('.turnos')  
 const celulasPrimeiraLinha = arrayFromCelulas(celulas)
@@ -144,8 +142,6 @@ if (celulasPrimeiraLinha.every((celula) => celula.children.length === 0)) {
     alert('Ainda há cartas na primeira linha!');
 }
 });
-
-
 
 initRecolherStatusCartas()
 initBotaoIrAoFim()

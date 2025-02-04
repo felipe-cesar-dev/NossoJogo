@@ -5,6 +5,7 @@ import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
 import arrayFromCelulas from "./utils/arrayFromCelulas.js";
 import criarPropsCarta from "./utils/criarPropsDeCartas.js";
 import estilizarCartas from "./utils/estilizarCarta.js";
+import iEstilizarCartaStatus from "./utils/estilziarCartaStatus.js";
 import Movimentacoes from "./classes/Movimentacoes.js";
 
 // Variáveis globais
@@ -15,7 +16,6 @@ let divSelecionada = null; //desacoplada do criarCarta
 let soma = 0
 const movimentacoes = new Movimentacoes;
 
-// Funções principais
 
 function criarCarta(celula, numeroAleatorio) {
   let div = null
@@ -29,24 +29,7 @@ function criarCarta(celula, numeroAleatorio) {
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   estilizarCartas(carta)
   movimentacoes.adicionarMovimentacao(movimentacao);
-  carta.addEventListener('click', () => {
-    if (div && div !== carta) {
-      div.style.opacity = '1';
-    }
-    div = carta;
-    console.log('Div selecionada:', carta);
-    div.style.opacity = '0.5'
-    textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`
-    exibirCarta.appendChild(imagem, textoCarta)
-    imagem.src = carta.props.img
-    imagem.style.display = 'block'
-    textoCarta.innerHTML = `Nome: ${carta.props.Nome}\nVida: ${carta.props.Vida}\n Ataque: ${carta.props.Ataque}`
-  });
-  document.addEventListener('click', (event) => {
-    if (div && !div.contains(event.target)) {
-      div.style.opacity = '1';
-    }
-  });
+  iEstilizarCartaStatus(carta, textoCarta, exibirCarta, imagem, div, movimentacao, textoLocomocao )
   celula.appendChild(carta);
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];

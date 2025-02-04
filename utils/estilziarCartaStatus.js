@@ -1,4 +1,7 @@
-export default function estilizarCartaStatus(carta, textoCarta, exibirCarta, imagem, div, movimentacao, textoLocomocao){
+export default function estilizarCartaStatus(carta, div, movimentacao, textoLocomocao){
+    const textoCarta = document.querySelector('.textoCarta') 
+    const exibirCarta = document.querySelector('.exibirCarta')
+    const imagem = document.querySelector('img')
     carta.addEventListener('click', () => {
       if (div && div !== carta) {
         div.style.opacity = '1';

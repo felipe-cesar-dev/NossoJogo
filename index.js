@@ -16,24 +16,21 @@ let divSelecionada = null; //desacoplada do criarCarta
 let soma = 0
 const movimentacoes = new Movimentacoes;
 
-
 function criarCarta(celula, numeroAleatorio) {
   let div = null
-  const textoCarta = document.querySelector('.textoCarta') 
-  const exibirCarta = document.querySelector('.exibirCarta')
-  const imagem = document.querySelector('img')
   const carta = document.createElement('div');
   const locomocao = Cartas[numeroAleatorio].Locomocao;
   const movimentacao = { div: carta, movimentacao: locomocao };
   carta.classList.add('cartas');
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
-  estilizarCartas(carta)
+  
   movimentacoes.adicionarMovimentacao(movimentacao);
-  iEstilizarCartaStatus(carta, textoCarta, exibirCarta, imagem, div, movimentacao, textoLocomocao )
+  iEstilizarCartaStatus(carta, div, movimentacao, textoLocomocao )
   celula.appendChild(carta);
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
   carta.props = criarPropsCarta(cartaProps);
+  estilizarCartas(carta)
   // Deletar a propriedade de Cartas
   delete Cartas[numeroAleatorio];
   console.log(Object.keys(Cartas));

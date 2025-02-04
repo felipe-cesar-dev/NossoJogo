@@ -149,13 +149,10 @@ transition: 0.4s;
 cursor: pointer;
 }
 
-.fundo{
-    background-image: url('./images/deck.jpg');
+.fundo, .fundo2{
+    background-color: rgb(164, 164, 7);
 }
 
-.fundo2{
-    background-image: url('./images/deck.jpg');
-}
 
 .fundoBatalha{
 background-image: url('./images/campodebatalha.jpg');

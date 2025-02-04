@@ -23,7 +23,6 @@ function criarCarta(celula, numeroAleatorio) {
   const movimentacao = { div: carta, movimentacao: locomocao };
   carta.classList.add('cartas');
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
-  
   movimentacoes.adicionarMovimentacao(movimentacao);
   iEstilizarCartaStatus(carta, div, movimentacao, textoLocomocao )
   celula.appendChild(carta);

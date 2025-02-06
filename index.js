@@ -113,6 +113,7 @@ function moverCarta(celula) {
         }
         textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
         celulasGeradas.push(celula);
+        //celula.appendChild(textoLocomocao)
       }
     } else {
       console.log('Movimento não permitido');

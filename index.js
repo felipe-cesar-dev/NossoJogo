@@ -15,6 +15,7 @@ const botaoReset = document.getElementById('reset-button')
 let divSelecionada = null; //desacoplada do criarCarta
 let soma = 0
 const movimentacoes = new Movimentacoes;
+let celulasGeradas = [];
 
 function criarCarta(celula, numeroAleatorio) {
   let div = null
@@ -26,6 +27,7 @@ function criarCarta(celula, numeroAleatorio) {
   movimentacoes.adicionarMovimentacao(movimentacao);
   iEstilizarCartaStatus(carta, div, movimentacao, textoLocomocao )
   celula.appendChild(carta);
+  celulasGeradas.push(celula);
   // Armazenar as propriedades da carta em uma variável
   const cartaProps = Cartas[numeroAleatorio];
   carta.props = criarPropsCarta(cartaProps);
@@ -82,27 +84,35 @@ function moverCarta(celula) {
     const cellIndex = celulaAtual.cellIndex;
     const newRow = celula.parentNode.rowIndex;
     const newCell = celula.cellIndex;
+
     // Verifica se a carta está tentando voltar para a linha 0
     if (newRow === 0 && rowIndex > 0) {
       console.log('Não é permitido voltar para a linha 0');
       return;
     }
+
     // Verifica se a célula destino já contém uma carta
     if (celula.children.length > 0) {
       console.log('Célula destino já contém uma carta');
       return;
     }
+
     // Verifica se a célula destino tem a classe "muro"
     if (celula.classList.contains('muro')) {
       console.log('Não é permitido mover para uma célula com a classe "muro"');
       return;
     }
+
     if (Math.abs(newRow - rowIndex) + Math.abs(newCell - cellIndex) === 1) {
       const movimentacao = movimentacoes.encontrarMovimentacao((m) => m.div === divSelecionada);
       if (movimentacao.movimentacao > 0) {
         celula.appendChild(divSelecionada);
         movimentacao.movimentacao--;
+        if (movimentacao.movimentacao === 0) {
+          celula.style.filter =  'brightness(50%)';
+        }
         textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
+        celulasGeradas.push(celula);
       }
     } else {
       console.log('Movimento não permitido');
@@ -127,6 +137,10 @@ function handleResetButtonClick() {
     soma += 0.5;
     turnos.innerHTML = `Turno ${soma}`;
     iGerarCartasNaTela();
+    celulasGeradas.forEach((celula) => {
+      celula.style.filter = 'brightness(100%)';
+    });
+    celulasGeradas = [];
   } else {
     alert('Ainda há cartas na primeira linha!');
   }

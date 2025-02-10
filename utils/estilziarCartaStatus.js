@@ -4,7 +4,6 @@ export default function estilizarCartaStatus(carta, div, movimentacao, textoLoco
     const imagem = document.querySelector('img')
     carta.addEventListener('click', () => {
       div = carta;
-      console.log('Div selecionada:', carta);
       div.style.opacity = '0.7'
       textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`
       exibirCarta.appendChild(imagem, textoCarta)

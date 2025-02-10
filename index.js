@@ -73,7 +73,6 @@ function adicionarMovimentacao(carta) {
   movimentacoes.adicionarMovimentacao(movimentacao);
   carta.addEventListener('click', () => {
     divSelecionada = carta;
-    console.log('Div selecionada:', carta);
   });
 }
 
@@ -93,7 +92,6 @@ function moverCarta(celula) {
 
     // Verifica se a célula destino já contém uma carta
     if (celula.children.length > 0) {
-      console.log('Célula destino já contém uma carta');
       return;
     }
 

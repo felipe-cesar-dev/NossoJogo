@@ -12,6 +12,7 @@ import Movimentacoes from "./classes/Movimentacoes.js";
 const celulas = document.querySelectorAll('td');
 const textoLocomocao = document.querySelector('.locomocao') 
 const botaoReset = document.getElementById('reset-button')
+const botaoAvancarCartas = document.getElementById('avancar-cartas');
 let divSelecionada = null; //desacoplada do criarCarta
 let soma = 0
 const movimentacoes = new Movimentacoes;
@@ -140,10 +141,44 @@ function handleResetButtonClick() {
       celula.style.filter = 'brightness(100%)';
     });
     celulasGeradas = [];
+    // Resetar o brilho das células que foram movidas para baixo
+    document.querySelectorAll('td').forEach((celula) => {
+      if (celula.style.filter === 'brightness(50%)') {
+        celula.style.filter = 'brightness(100%)';
+      }
+    });
   } else {
     alert('Ainda há cartas na primeira linha!');
   }
 }
+
+
+
+botaoAvancarCartas.addEventListener('click', () => {
+  const cartas = document.querySelectorAll('.cartas');
+  cartas.forEach((carta) => {
+    const celulaAtual = carta.parentNode;
+    const indiceCelulaAtual = Array.prototype.indexOf.call(celulaAtual.parentNode.children, celulaAtual);
+    const proximaCelula = celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex + 1].cells[indiceCelulaAtual];
+    if (proximaCelula && proximaCelula.tagName === 'TD') {
+      const movimentacao = movimentacoes.encontrarMovimentacao((m) => m.div === carta);
+      if (movimentacao.movimentacao > 0) {
+        proximaCelula.appendChild(carta);
+        movimentacao.movimentacao--;
+        if (movimentacao.movimentacao === 0) {
+          proximaCelula.style.filter = 'brightness(50%)';
+        }
+        textoLocomocao.innerHTML = `Locomoção: ${movimentacao.movimentacao}`;
+      }
+    }
+  });
+  // Resetar o brilho das células que foram movidas para baixo
+  celulasGeradas.forEach((celula) => {
+    if (celula.style.filter === 'brightness(50%)') {
+      celula.style.filter = 'brightness(100%)';
+    }
+  });
+});
 
 botaoReset.addEventListener('click', handleResetButtonClick);
 

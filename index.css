@@ -69,26 +69,24 @@ aside {
     padding: 5px;
 }
 
-.recolherStatusCartas:hover,.girarBotao:hover, #reset-button:hover, .gerarCartas:hover, #ir-ao-fim:hover{
+.recolherStatusCartas:hover,.girarBotao:hover, #reset-button:hover, .gerarCartas:hover, #ir-ao-fim:hover, #avancar-cartas:hover{
     background-color: #b60a0a;
 }
 
-.recolherStatusCartas,.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim{
+.recolherStatusCartas,.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim, #avancar-cartas{
     background-color: #640505;
     color: white;
     cursor: pointer;
     transition: 0.5s;
+    width: 135px;
 }
 
-.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim{
+.girarBotao, #reset-button, .gerarCartas, #ir-ao-fim, #avancar-cartas{
     padding: 10px;
     border-radius: 10px;
     border: 1px solid white;
 }
 
-#ir-ao-fim{
-    width: 135px;
-}
 
 .exibirCarta {
     background-color: rgb(37, 37, 37);

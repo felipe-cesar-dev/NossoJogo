@@ -160,7 +160,7 @@ botaoAvancarCartas.addEventListener('click', () => {
     const celulaAtual = carta.parentNode;
     const indiceCelulaAtual = Array.prototype.indexOf.call(celulaAtual.parentNode.children, celulaAtual);
     const proximaCelula = celulaAtual.parentNode.parentNode.rows[celulaAtual.parentNode.rowIndex + 1].cells[indiceCelulaAtual];
-    if (proximaCelula && proximaCelula.tagName === 'TD') {
+    if (proximaCelula && proximaCelula.tagName === 'TD' && !proximaCelula.classList.contains('muro') && proximaCelula.children.length === 0) {
       const movimentacao = movimentacoes.encontrarMovimentacao((m) => m.div === carta);
       if (movimentacao.movimentacao > 0) {
         proximaCelula.appendChild(carta);

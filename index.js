@@ -23,7 +23,7 @@ function criarCarta(celula, numeroAleatorio) {
   const carta = document.createElement('div');
   const locomocao = Cartas[numeroAleatorio].Locomocao;
   const movimentacao = { div: carta, movimentacao: locomocao };
-  carta.classList.add('cartas');
+  carta.classList.add('personagem');
   carta.style.backgroundImage = `url(${Cartas[numeroAleatorio].img})`;
   movimentacoes.adicionarMovimentacao(movimentacao);
   iEstilizarCartaStatus(carta, div, movimentacao, textoLocomocao )
@@ -153,7 +153,7 @@ function handleResetButtonClick() {
 }
 
 botaoAvancarCartas.addEventListener('click', () => {
-  const cartas = document.querySelectorAll('.cartas');
+  const cartas = document.querySelectorAll('.personagem');
   cartas.forEach((carta) => {
     const celulaAtual = carta.parentNode;
     const indiceCelulaAtual = Array.prototype.indexOf.call(celulaAtual.parentNode.children, celulaAtual);

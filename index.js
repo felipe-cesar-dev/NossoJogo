@@ -2,7 +2,7 @@ import Cartas from "./assets/deckCartasDict.js";
 import initBotaoIrAoFim from "./utils/botaoFimComeco.js";
 import initRecolherStatusCartas from "./utils/botaoOcultarMostrarStatus.js";
 import gerarNumeroAleatorio from "./utils/gerarNumerosAleatorios.js";
-import arrayFromCelulas from "./utils/arrayFromCelulas.js";
+import arrayFromCelulas from "./utils/pontoPartidaCartas.js";
 import criarPropsCarta from "./utils/criarPropsDeCartas.js";
 import estilizarCartas from "./utils/estilizarCarta.js";
 import iEstilizarCartaStatus from "./utils/estilziarCartaStatus.js";
@@ -151,8 +151,6 @@ function handleResetButtonClick() {
     alert('Ainda há cartas na primeira linha!');
   }
 }
-
-
 
 botaoAvancarCartas.addEventListener('click', () => {
   const cartas = document.querySelectorAll('.cartas');
